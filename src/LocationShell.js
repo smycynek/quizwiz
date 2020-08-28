@@ -7,7 +7,7 @@ import TakeQuiz from './TakeQuiz';
 const LocationShell = () => {
   const location = useLocation();
   console.log(location.search);
-  return (<TakeQuiz id={location.search.split('=')[1]} />);
+  return (<TakeQuiz />);
 };
 
 export default LocationShell;

@@ -2,14 +2,17 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import CasualQuiz from 'react-casual-quiz/lib';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const TakeQuiz = ({ id }) => {
+const TakeQuiz = ({ match }) => {
+  // eslint-disable-next-line react/prop-types
+  const { params: { id } } = match;
+
   const baseUrl = process.env.REACT_APP_API_ENDPOINT;
   const endpoint = `${baseUrl}/quizzes/${id}`;
-  console.log(endpoint);
+
   const [quizData, setQuizData] = useState(null);
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState(false);
@@ -47,6 +50,8 @@ const TakeQuiz = ({ id }) => {
         questions={quizData.questions}
       />
       )}
+
+      <Link to="/list">Take a different quiz...</Link>
     </>
   );
 };

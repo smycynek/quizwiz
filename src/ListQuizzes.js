@@ -5,16 +5,19 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
+import {
+  Link,
+} from 'react-router-dom';
+
 const QuizList = ({ data }) => data.map((datum) => (
-  <li>
-    <a href={`/quizwiz/?id=${datum[1]}`}>{datum[0]}</a>
+  <li key={datum[1]}>
+    <Link to={`/take/${datum[1]}`}>{datum[0]}</Link>
   </li>
 ));
 
 // eslint-disable-next-line react/prop-types
 const ListQuizzes = () => {
   const baseUrl = process.env.REACT_APP_API_ENDPOINT;
-  console.log(baseUrl);
 
   const [quizList, setQuizList] = useState(null);
   const [waiting, setWaiting] = useState(false);
@@ -57,7 +60,7 @@ const ListQuizzes = () => {
       {quizList && (
       <>
         <ul style={{ listStyleType: 'none' }}>
-          <QuizList data={quizList} />
+          <QuizList key={1} data={quizList} />
         </ul>
       </>
       )}
