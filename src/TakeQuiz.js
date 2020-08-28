@@ -6,10 +6,10 @@ import axios from 'axios';
 import CasualQuiz from 'react-casual-quiz/lib';
 
 // eslint-disable-next-line react/prop-types
-const App = ({ id }) => {
-  const baseUrl = 'https://whispering-ocean-54006.herokuapp.com/quizzes/';
-
-  const endpoint = baseUrl + id;
+const TakeQuiz = ({ id }) => {
+  const baseUrl = process.env.REACT_APP_API_ENDPOINT;
+  const endpoint = `${baseUrl}/quizzes/${id}`;
+  console.log(endpoint);
   const [quizData, setQuizData] = useState(null);
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState(false);
@@ -51,4 +51,4 @@ const App = ({ id }) => {
   );
 };
 
-export default App;
+export default TakeQuiz;

@@ -2,12 +2,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import App from './App';
+import TakeQuiz from './TakeQuiz';
 
 const LocationShell = () => {
   const location = useLocation();
   console.log(location.search);
-  return (<App id={location.search.split('=')[1]} />);
+  return (<TakeQuiz id={location.search.split('=')[1]} />);
 };
 
 export default LocationShell;
