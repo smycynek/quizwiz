@@ -1,13 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
-
 import {
   Link,
 } from 'react-router-dom';
+import quizFreakClient from './quizFreakClient';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
   <li key={datum[1]}>
@@ -17,7 +17,7 @@ const QuizList = ({ data }) => data.map((datum) => (
 
 // eslint-disable-next-line react/prop-types
 const ListQuizzes = () => {
-  const baseUrl = process.env.REACT_APP_API_ENDPOINT;
+  const client = quizFreakClient();
 
   const [quizList, setQuizList] = useState(null);
   const [waiting, setWaiting] = useState(false);
@@ -26,16 +26,15 @@ const ListQuizzes = () => {
   function fetchQuizzes() {
     setWaiting(true);
     setError(false);
-    axios
-      .get(`${baseUrl}/quizzes`, {
-        mode: 'no-cors',
-      })
+    client.getQuizzes()
       .then((res) => {
         const { data } = res;
 
         const quizNames = [];
         data.forEach((element) => {
-          quizNames.push([element.name, element.id]);
+          if (element.locked) {
+            quizNames.push([element.name, element.id]);
+          }
         });
 
         setQuizList(quizNames);
@@ -64,6 +63,9 @@ const ListQuizzes = () => {
         </ul>
       </>
       )}
+      <div>
+        <Link to="/">Home...</Link>
+      </div>
     </>
   );
 };

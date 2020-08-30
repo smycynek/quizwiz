@@ -6,10 +6,13 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import TakeQuiz from './TakeQuiz';
+import Create from './Create';
+
 import ListQuizzes from './ListQuizzes';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import Home from './Home';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,14 +20,19 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/">
           <>
-            <h1 className="text-primary">Quizzes</h1>
-            <ListQuizzes />
+            <Home />
           </>
         </Route>
         <Route exact path="/list">
           <>
             <h1 className="text-primary">Quizzes</h1>
             <ListQuizzes />
+          </>
+        </Route>
+
+        <Route exact path="/create">
+          <>
+            <Create />
           </>
         </Route>
 
