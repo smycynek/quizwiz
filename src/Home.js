@@ -19,6 +19,16 @@ const Home = () => (
       <Link to="/list">See existing quizzes...</Link>
     </div>
 
+    <div>
+      <Link to="/cq">Quiz</Link>
+    </div>
+    <div>
+      <Link to="/cr">Result</Link>
+    </div>
+    <div>
+      <Link to="/cqu">Question</Link>
+    </div>
+
   </>
 );
 

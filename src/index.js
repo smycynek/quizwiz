@@ -13,6 +13,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './Home';
+import CreateQuiz from './CreateQuiz';
+import CreateResults from './CreateResults';
+import CreateQuestion from './CreateQuestion';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -40,6 +43,24 @@ ReactDOM.render(
           path="/take/:id"
           render={(props) => (<TakeQuiz {...props} />)}
         />
+
+        <Route exact path="/cq">
+          <>
+            <CreateQuiz />
+          </>
+        </Route>
+
+        <Route exact path="/cr">
+          <>
+            <CreateResults />
+          </>
+        </Route>
+
+        <Route exact path="/cqu">
+          <>
+            <CreateQuestion />
+          </>
+        </Route>
 
       </Switch>
     </Router>
