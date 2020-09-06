@@ -1,33 +1,44 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from 'react';
+import React from 'react';
+
+import { connect } from 'react-redux';
+import {
+  reduxForm, Field,
+} from 'redux-form';
+import EnhancedInput from './EnhancedInput';
+
+const required = (value) => (value ? undefined : 'You must have a quiz title!');
+const tooShort = (value) => (value && value.length < 5 ? 'Make it a good title!' : undefined);
 
 // eslint-disable-next-line react/prop-types
-const CreateQuiz = () => {
-  const [quizName, setQuizName] = useState(null);
-  const createQuiz = () => {};
-  const handleQuizNameChange = (e) => {
-    setQuizName(e.target.value);
-  };
-  return (
-    <>
+const CreateQuizFormLayout = ({ invalid, onSubmit }) => (
+  <>
+    <form>
       <div>
-        <label>
-          Give your quiz a name
-          <input
-            style={{ width: '600px' }}
-            placeholder="Which BoJack Horseman character are you?"
-            className="form-control"
-            type="text"
-            value={quizName}
-            onChange={handleQuizNameChange}
-          />
-        </label>
+        <h4>Give your quiz a name</h4>
+        <div className="form-group">
+          <Field label="Title" placeholder="Which BoJack Horseman character are you?" validate={[required, tooShort]} className="form-control" name="quizTitle" component={EnhancedInput} type="text" />
+        </div>
+
       </div>
       <div>
-        <button className="btn btn-primary" type="button" onClick={createQuiz}>Next...</button>
+        <button disabled={invalid} onClick={onSubmit} className="btn btn-primary" type="button">Next...</button>
       </div>
-    </>
-  );
-};
+    </form>
+  </>
+);
+
+// eslint-disable-next-line no-unused-vars
+const mapStateToProps = (state) => ({
+});
+
+// eslint-disable-next-line no-unused-vars
+const mapDispatchToProps = (dispatch) => ({});
+
+const CreateQuizForm = reduxForm({
+  // a unique name for the form
+  form: 'CreateQuiz',
+})(CreateQuizFormLayout);
+const CreateQuiz = connect(mapStateToProps, mapDispatchToProps)(CreateQuizForm);
 export default CreateQuiz;

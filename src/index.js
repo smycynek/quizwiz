@@ -5,10 +5,15 @@ import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
 import TakeQuiz from './TakeQuiz';
 import Create from './Create';
 
 import ListQuizzes from './ListQuizzes';
+import reducer from './reducers';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -17,53 +22,62 @@ import CreateQuiz from './CreateQuiz';
 import CreateResults from './CreateResults';
 import CreateQuestion from './CreateQuestion';
 
+const store = createStore(
+  reducer,
+  {},
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/quizwiz">
-      <Switch>
-        <Route exact path="/">
-          <>
-            <Home />
-          </>
-        </Route>
-        <Route exact path="/list">
-          <>
-            <h1 className="text-primary">Quizzes</h1>
-            <ListQuizzes />
-          </>
-        </Route>
+    <Provider store={store}>
+      <Router basename="/quizwiz">
+        <Switch>
+          <Route exact path="/">
+            <>
+              <Home />
+            </>
+          </Route>
+          <Route exact path="/list">
+            <>
+              <h1 className="text-primary">Quizzes</h1>
+              <ListQuizzes />
+            </>
+          </Route>
 
-        <Route exact path="/create">
-          <>
-            <Create />
-          </>
-        </Route>
+          <Route exact path="/create">
+            <>
+              <Create />
+            </>
+          </Route>
 
-        <Route
-          path="/take/:id"
-          render={(props) => (<TakeQuiz {...props} />)}
-        />
+          <Route
+            path="/take/:id"
+            render={(props) => (<TakeQuiz {...props} />)}
+          />
 
-        <Route exact path="/cq">
-          <>
-            <CreateQuiz />
-          </>
-        </Route>
+          <Route exact path="/cq">
+            <>
+              <CreateQuiz />
+            </>
+          </Route>
 
-        <Route exact path="/cr">
-          <>
-            <CreateResults />
-          </>
-        </Route>
+          <Route exact path="/cr">
+            <>
+              <CreateResults />
+            </>
+          </Route>
 
-        <Route exact path="/cqu">
-          <>
-            <CreateQuestion />
-          </>
-        </Route>
+          <Route exact path="/cqu">
+            <>
+              <CreateQuestion />
+            </>
+          </Route>
 
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
