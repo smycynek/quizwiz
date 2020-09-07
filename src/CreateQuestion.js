@@ -12,7 +12,7 @@ const required = (value) => (value ? undefined : 'You must enter someting!');
 const tooShort = (value) => (value && value.length < 3 ? 'Make it good!' : undefined);
 
 // eslint-disable-next-line react/prop-types
-const CreateQuestionFormLayout = ({ invalid, onSubmit }) => (
+const CreateQuestionFormLayout = ({ invalid, onSubmit, onSubmitPublish }) => (
   <>
     <div>
       <h4>
@@ -44,7 +44,7 @@ const CreateQuestionFormLayout = ({ invalid, onSubmit }) => (
           <button disabled={invalid} className="btn btn-primary" type="button" onClick={onSubmit}>Add another question...</button>
         </div>
         <div style={{ padding: '5px' }}>
-          <button disabled={invalid} className="btn btn-primary" type="button" onClick={onSubmit}>Finish...</button>
+          <button disabled={invalid} className="btn btn-primary" type="button" onClick={onSubmitPublish}>Finish...</button>
         </div>
       </form>
     </div>
