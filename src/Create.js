@@ -121,7 +121,7 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
       { quizTitle
       && (
       <>
-        <h4>Title</h4>
+        <h4>Quiz Title</h4>
         <span>
           {quizTitle}
         </span>
@@ -132,17 +132,25 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
     quizTitle && !personalityA && <CreateResults onSubmit={handleSubmitResults} />
   }
 
-      {personalityA
-      && (
+      {!done && personalityA && (
+      <CreateQuestion
+        personalityA={personalityA}
+        personalityB={personalityB}
+        personalityC={personalityC}
+        personalityD={personalityD}
+
+        onSubmitPublish={handlePublish}
+        onSubmit={handleSubmitQuestion}
+      />
+      ) }
+      {quizId && done && (
       <>
-        <h4>Personalities</h4>
-        <div>{personalityA}</div>
-        <div>{personalityB}</div>
-        <div>{personalityC}</div>
-        <div>{personalityD}</div>
+        <div>Your quiz:</div>
+        <a href={`https://www.stevenvictor.net/quizwiz/take/${quizId}`}>
+          {`https://www.stevenvictor.net/quizwiz/take/${quizId}`}
+        </a>
       </>
       )}
-      {!done && personalityA && <CreateQuestion onSubmitPublish={handlePublish} onSubmit={handleSubmitQuestion} /> }
       <div>
         <Link to="/">Home...</Link>
       </div>
