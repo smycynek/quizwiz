@@ -1,22 +1,25 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Link,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  reduxForm, Field, getFormValues,
-} from 'redux-form';
+import { getFormValues } from 'redux-form';
 import quizFreakClient from './quizFreakClient';
 import CreateQuiz from './CreateQuiz';
 import CreateResults from './CreateResults';
 import CreateQuestion from './CreateQuestion';
 
 // eslint-disable-next-line react/prop-types
-const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, formValuesFromCreateQuestion }) => {
+const CreateCore = ({
+  formValuesFromCreateQuiz,
+  formValuesFromCreateResults, formValuesFromCreateQuestion,
+}) => {
   const [quizTitle, setQuizTitle] = useState(null);
 
   const [quizId, setQuizId] = useState(null);
@@ -36,6 +39,7 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
   const [questions, setQuestions] = useState([]);
   const [done, setDone] = useState(false);
 
+  const [oneQuestion, setOneQuestion] = useState(false);
   const client = quizFreakClient();
 
   const storeQuiz = (name) => {
@@ -89,10 +93,14 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
     setPersonalityD(formValuesFromCreateResults.personalityD);
     setPersonalityDDescription(formValuesFromCreateResults.personalityDDescription);
 
-    storeResult(formValuesFromCreateResults.personalityA, formValuesFromCreateResults.personalityADescription);
-    storeResult(formValuesFromCreateResults.personalityB, formValuesFromCreateResults.personalityBDescription);
-    storeResult(formValuesFromCreateResults.personalityC, formValuesFromCreateResults.personalityCDescription);
-    storeResult(formValuesFromCreateResults.personalityD, formValuesFromCreateResults.personalityDDescription);
+    storeResult(formValuesFromCreateResults.personalityA,
+      formValuesFromCreateResults.personalityADescription);
+    storeResult(formValuesFromCreateResults.personalityB,
+      formValuesFromCreateResults.personalityBDescription);
+    storeResult(formValuesFromCreateResults.personalityC,
+      formValuesFromCreateResults.personalityCDescription);
+    storeResult(formValuesFromCreateResults.personalityD,
+      formValuesFromCreateResults.personalityDDescription);
   };
 
   const handleSubmitQuestion = () => {
@@ -105,10 +113,12 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
     };
     storeQuestion(question.questionText, question.choiceA,
       question.choiceB, question.choiceC, question.choiceD);
+    setOneQuestion(true);
   };
 
   const handlePublish = () => {
     setDone(true);
+    client.publishQuiz(quizId);
   };
 
   return (
@@ -141,14 +151,13 @@ const CreateCore = ({ formValuesFromCreateQuiz, formValuesFromCreateResults, for
 
         onSubmitPublish={handlePublish}
         onSubmit={handleSubmitQuestion}
+        oneQuestion={oneQuestion}
       />
       ) }
       {quizId && done && (
       <>
         <div>Your quiz:</div>
-        <a href={`https://www.stevenvictor.net/quizwiz/take/${quizId}`}>
-          {`https://www.stevenvictor.net/quizwiz/take/${quizId}`}
-        </a>
+        <Link to={`/take/${quizId}`}>{`https://www.stevenvictor.net/quizwiz/take/${quizId}`}</Link>
       </>
       )}
       <div>

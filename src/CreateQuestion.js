@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useDispatch } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -18,6 +19,7 @@ const CreateQuestionFormLayout = ({
   personalityB,
   personalityC,
   personalityD,
+  oneQuestion,
   reset,
 }) => {
   const onSubmitWrapper = () => {
@@ -104,17 +106,17 @@ const CreateQuestionFormLayout = ({
               type="button"
               onClick={onSubmitWrapper}
             >
-              Add another question...
+              Add question
             </button>
           </div>
           <div style={{ padding: '5px' }}>
             <button
-              disabled={invalid}
+              disabled={invalid && !oneQuestion}
               className="btn btn-primary"
               type="button"
               onClick={publish}
             >
-              Finish...
+              Finished...
             </button>
           </div>
         </form>

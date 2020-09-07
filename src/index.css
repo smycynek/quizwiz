@@ -6,3 +6,8 @@ body {
   margin: 10px;
   padding: 10px;
 }
+
+ol, li {
+  margin-left: 10px;
+  padding-left: 10px;
+}
