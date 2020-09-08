@@ -7,6 +7,8 @@ import {
   reduxForm, Field,
 } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const required = (value) => (value ? undefined : 'You must enter all personality types!');
 const tooShort = (value) => (value && value.length < 1 ? 'Make it a good personality type!' : undefined);
@@ -15,7 +17,7 @@ const tooShort = (value) => (value && value.length < 1 ? 'Make it a good persona
 const CreateResultsFormLayout = ({ invalid, onSubmit }) => (
   <>
     <div>
-      <h4>
+      <h4 className="text-secondary">
         What are the four quiz outcomes, i.e, the personality results (corresponding
         to question choices A, B, C, and D) ?
       </h4>

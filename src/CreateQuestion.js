@@ -6,6 +6,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const required = (value) => (value ? undefined : 'You must enter someting!');
 const tooShort = (value) => (value && value.length < 3 ? 'Make it good!' : undefined);
@@ -27,14 +29,17 @@ const CreateQuestionFormLayout = ({
     reset();
   };
 
-  const publish = () => {
+  const publish = (invalidState) => {
+    if (!invalidState) {
+      onSubmit();
+    }
     onSubmitPublish();
   };
 
   return (
     <>
       <div>
-        <h4>
+        <h4 className="text-secondary">
           Add a question, pairing the choices with the personality outcomes you
           entered previously.
         </h4>
@@ -106,15 +111,15 @@ const CreateQuestionFormLayout = ({
               type="button"
               onClick={onSubmitWrapper}
             >
-              Add question
+              Add another question
             </button>
           </div>
           <div style={{ padding: '5px' }}>
             <button
-              disabled={invalid && !oneQuestion}
+              disabled={!oneQuestion && invalid}
               className="btn btn-primary"
               type="button"
-              onClick={publish}
+              onClick={() => publish(invalid)}
             >
               Finished...
             </button>

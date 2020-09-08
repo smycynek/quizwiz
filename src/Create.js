@@ -14,6 +14,8 @@ import quizFreakClient from './quizFreakClient';
 import CreateQuiz from './CreateQuiz';
 import CreateResults from './CreateResults';
 import CreateQuestion from './CreateQuestion';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 // eslint-disable-next-line react/prop-types
 const CreateCore = ({
@@ -123,7 +125,7 @@ const CreateCore = ({
 
   return (
     <>
-      <h1>Quiz Wiz</h1>
+      <h1 className="text-primary">Quiz Wiz</h1>
       {
       !quizTitle && <CreateQuiz onSubmit={handleSubmitTitle} />
       }
@@ -131,10 +133,11 @@ const CreateCore = ({
       { quizTitle
       && (
       <>
-        <h4>Quiz Title</h4>
-        <span>
+        <h3>
+          Title:
+          {' '}
           {quizTitle}
-        </span>
+        </h3>
       </>
       )}
 
@@ -157,7 +160,7 @@ const CreateCore = ({
       {quizId && done && (
       <>
         <div>Your quiz:</div>
-        <Link to={`/take/${quizId}`}>{`https://www.stevenvictor.net/quizwiz/take/${quizId}`}</Link>
+        <Link to={`/take/${quizId}`}>{quizTitle}</Link>
       </>
       )}
       <div>

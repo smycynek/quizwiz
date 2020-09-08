@@ -7,6 +7,8 @@ import {
   reduxForm, Field,
 } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const required = (value) => (value ? undefined : 'You must have a quiz title!');
 const tooShort = (value) => (value && value.length < 5 ? 'Make it a good title!' : undefined);
@@ -16,7 +18,7 @@ const CreateQuizFormLayout = ({ invalid, onSubmit }) => (
   <>
     <form>
       <div>
-        <h4>Give your quiz a name</h4>
+        <h4 className="text-secondary">Give your quiz a name</h4>
         <div className="form-group">
           <Field label="Title" placeholder="Which BoJack Horseman character are you?" validate={[required, tooShort]} className="form-control" name="quizTitle" component={EnhancedInput} type="text" />
         </div>

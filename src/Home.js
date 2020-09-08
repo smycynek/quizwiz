@@ -19,18 +19,31 @@ const Home = () => (
       <Link to="/list">See existing quizzes...</Link>
     </div>
 
-    <div>
-      <Link to="/cq">(DEBUG)-quiz</Link>
-    </div>
-    <div>
-      <Link to="/cr">(DEBUG)-result</Link>
-    </div>
-    <div>
-      <Link to="/cqu">(DEBUG)-question</Link>
-    </div>
+    {false
+&& (
+<div>
+  <div>
+    <Link to="/cq">(DEBUG)-quiz</Link>
+  </div>
+  <div>
+    <Link to="/cr">(DEBUG)-result</Link>
+  </div>
+  <div>
+    <Link to="/cqu">(DEBUG)-question</Link>
+  </div>
+</div>
+)}
     <hr />
-    <h3 className="text-secondary">Known bugs/limitations...</h3>
+    <h3 className="text-secondary">Work in Progress - Known bugs/limitations...</h3>
     <ol>
+      <li>
+        The back-end is hosted on free tier service.  It needs wake up if not in
+        use for a while. Go to
+        {' '}
+        <Link to="/list">See existing quizzes...</Link>
+        {' '}
+        and wait a few seconds to activate it...
+      </li>
       <li>
         Some issue with ordering personality type results
       </li>

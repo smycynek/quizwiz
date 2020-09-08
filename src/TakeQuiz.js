@@ -5,6 +5,9 @@ import React, { useState, useEffect } from 'react';
 import CasualQuiz from 'react-casual-quiz/lib';
 import { Link } from 'react-router-dom';
 import quizFreakClient from './quizFreakClient';
+
+import 'bootstrap/dist/css/bootstrap.css';
+
 // eslint-disable-next-line react/prop-types
 const TakeQuiz = ({ match }) => {
   // eslint-disable-next-line react/prop-types
