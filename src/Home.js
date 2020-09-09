@@ -64,16 +64,13 @@ const Home = () => {
           {' '}
           <Link to="/list">See existing quizzes...</Link>
           {' '}
-          and wait a few seconds to activate it...
+          and wait a few seconds to activate it if you have problems.
         </li>
         <li>
           Some issue with ordering personality type results
         </li>
         <li>
-          Refreshing the browser breaks the session.
-        </li>
-        <li>
-          Copy/pasting links does not work -- use the main menu to navigate.
+          Refreshing the browser rests your session.
         </li>
         <li>
           Still need redux/saga framework to properly manage back-end.
