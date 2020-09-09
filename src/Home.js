@@ -15,7 +15,6 @@ const Home = () => {
     client.getQuizzes()
       .then((res) => {
         const { data } = res;
-
         const quizNames = [];
         data.forEach((element) => {
           if (element.locked) {
@@ -65,9 +64,6 @@ const Home = () => {
           <Link to="/list">See existing quizzes...</Link>
           {' '}
           and wait a few seconds to activate it if you have problems.
-        </li>
-        <li>
-          Some issue with ordering personality type results
         </li>
         <li>
           Refreshing the browser rests your session.
