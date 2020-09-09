@@ -2,9 +2,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router, Route, Switch,
-} from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
@@ -18,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './Home';
+
 import CreateQuiz from './CreateQuiz';
 import CreateResults from './CreateResults';
 import CreateQuestion from './CreateQuestion';
@@ -32,7 +32,7 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename="/quizwiz">
+      <HashRouter basename="/quizwiz">
         <Switch>
           <Route exact path="/">
             <>
@@ -76,7 +76,7 @@ ReactDOM.render(
           </Route>
 
         </Switch>
-      </Router>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

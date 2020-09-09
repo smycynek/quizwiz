@@ -54,7 +54,7 @@ const ListQuizzes = () => {
     <>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
 
-      {waiting && <div>Loading quiz list...</div>}
+      {waiting && <div>Loading quiz list (Using free tier hosting, please wait 30 seconds)...</div>}
       {error && <div>Error listing quizzes...</div>}
       {quizList && (
       <>
