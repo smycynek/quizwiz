@@ -13,8 +13,9 @@ import Create from './Create';
 import ListQuizzes from './ListQuizzes';
 import reducer from './reducers';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
 import * as serviceWorker from './serviceWorker';
 import Home from './Home';
 

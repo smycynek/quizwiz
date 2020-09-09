@@ -124,7 +124,7 @@ const CreateCore = ({
   };
 
   return (
-    <>
+    <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
       {
       !quizTitle && <CreateQuiz onSubmit={handleSubmitTitle} />
@@ -166,7 +166,7 @@ const CreateCore = ({
       <div>
         <Link to="/">Home...</Link>
       </div>
-    </>
+    </div>
   );
 };
 

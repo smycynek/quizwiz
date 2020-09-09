@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 import quizFreakClient from './quizFreakClient';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // eslint-disable-next-line react/prop-types
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
 
   useEffect(preWarm, []); // need to improve
   return (
-    <>
+    <div className="App">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
       <h1 className="text-primary">Quiz Wiz</h1>
       <p>Create a quiz, take a quiz, share a quiz...</p>
@@ -91,7 +91,7 @@ const Home = () => {
           Plenty of other things -- I work on this a little bit at a time :).
         </li>
       </ol>
-    </>
+    </div>
   );
 };
 export default Home;

@@ -11,3 +11,9 @@ ol, li {
   margin-left: 10px;
   padding-left: 10px;
 }
+
+
+.App {
+  margin:30px;
+  font-family: 'Roboto', sans-serif;
+}
