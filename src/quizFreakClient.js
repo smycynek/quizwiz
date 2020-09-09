@@ -10,7 +10,7 @@ const quizFreakClient = () => {
     getQuiz: (id) => api.get(`/quizzes/${id}`),
     getQuizzes: () => api.get('/quizzes'),
     createQuiz: (name) => api.post('/quizzes', { name }),
-    createResult: (name, description, quiz_id) => api.post('/results', { name, description, quiz_id }),
+    createResult: (name, description, index, quiz_id) => api.post('/results', { name, description, index, quiz_id }),
     createQuestion: (text, choices, quiz_id) => api.post('/questions', { text, choices, quiz_id }),
     publishQuiz: (quiz_id) => api.post(`/quizzes/${quiz_id}/lock`),
   };

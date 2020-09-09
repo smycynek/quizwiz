@@ -55,8 +55,8 @@ const CreateCore = ({
       });
   };
 
-  const storeResult = (name, description) => {
-    client.createResult(name, description, quizId)
+  const storeResult = (name, description, index) => {
+    client.createResult(name, description, index, quizId)
       .then((res) => {
         const { data } = res;
       },
@@ -96,13 +96,13 @@ const CreateCore = ({
     setPersonalityDDescription(formValuesFromCreateResults.personalityDDescription);
 
     storeResult(formValuesFromCreateResults.personalityA,
-      formValuesFromCreateResults.personalityADescription);
+      formValuesFromCreateResults.personalityADescription, 0);
     storeResult(formValuesFromCreateResults.personalityB,
-      formValuesFromCreateResults.personalityBDescription);
+      formValuesFromCreateResults.personalityBDescription, 1);
     storeResult(formValuesFromCreateResults.personalityC,
-      formValuesFromCreateResults.personalityCDescription);
+      formValuesFromCreateResults.personalityCDescription, 2);
     storeResult(formValuesFromCreateResults.personalityD,
-      formValuesFromCreateResults.personalityDDescription);
+      formValuesFromCreateResults.personalityDDescription, 3);
   };
 
   const handleSubmitQuestion = () => {
