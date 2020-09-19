@@ -40,10 +40,18 @@ export const addQuestion = (state = INITIAL_STATE, action) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-export const publishQuiz = (state = INITIAL_STATE, action) => {
+export const setDone = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     done: true,
+  };
+};
+
+// eslint-disable-next-line no-unused-vars
+export const oneQuestionDone = (state = INITIAL_STATE, action) => {
+  return {
+    ...state,
+    oneQuestionDone: true,
   };
 };
 
@@ -52,7 +60,8 @@ export const HANDLERS = {
   [Types.CREATE_QUIZ]: createQuiz,
   [Types.ADD_RESULT]: addResult,
   [Types.ADD_QUESTION]: addQuestion,
-  [Types.PUBLISH_QUIZ]: publishQuiz,
+  [Types.SET_DONE]: setDone,
+  [Types.SET_ONE_QUESTION_DONE]: oneQuestionDone,
 };
 
 const mainReducer = createReducer(INITIAL_STATE, HANDLERS);

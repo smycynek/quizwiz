@@ -21,7 +21,7 @@ const CreateQuestionFormLayout = ({
   personalityB,
   personalityC,
   personalityD,
-  oneQuestion,
+  oneQuestionDone,
   reset,
 }) => {
   const onSubmitWrapper = () => {
@@ -116,7 +116,7 @@ const CreateQuestionFormLayout = ({
           </div>
           <div style={{ padding: '5px' }}>
             <button
-              disabled={!oneQuestion && invalid}
+              disabled={!oneQuestionDone && invalid}
               className="btn btn-primary"
               type="button"
               onClick={() => publish(invalid)}

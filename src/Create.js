@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
@@ -17,43 +17,21 @@ import CreateQuestion from './CreateQuestion';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-// import { createQuiz, addResult, addQuestion } from './actions';
-
 import { Creators } from './types';
 
 // eslint-disable-next-line react/prop-types
 const CreateCore = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
-  createQuizP, addResultP, addQuestionP,
+  createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
+  done, oneQuestionDone, setDoneP, setOneQuestionP,
 }) => {
-  const [quizTitle, setQuizTitle] = useState(null);
-
-  const [quizId, setQuizId] = useState(null);
-
-  const [personalityA, setPersonalityA] = useState(null);
-  const [personalityADescription, setPersonalityADescription] = useState(null);
-
-  const [personalityB, setPersonalityB] = useState(null);
-  const [personalityBDescription, setPersonalityBDescription] = useState(null);
-
-  const [personalityC, setPersonalityC] = useState(null);
-  const [personalityCDescription, setPersonalityCDescription] = useState(null);
-
-  const [personalityD, setPersonalityD] = useState(null);
-  const [personalityDDescription, setPersonalityDDescription] = useState(null);
-
-  const [questions, setQuestions] = useState([]);
-  const [done, setDone] = useState(false);
-
-  const [oneQuestion, setOneQuestion] = useState(false);
   const client = quizFreakClient();
 
   const storeQuiz = (name) => {
     client.createQuiz(name)
       .then((res) => {
         const { data } = res;
-        setQuizId(data.id);
         createQuizP(name, data.id);
       },
       (err) => {
@@ -84,13 +62,10 @@ const CreateCore = ({
   };
 
   const handleSubmitTitle = () => {
-    setQuizTitle(formValuesFromCreateQuiz.quizTitle);
     storeQuiz(formValuesFromCreateQuiz.quizTitle);
   };
 
   const handleSubmitResults = () => {
-    setPersonalityA(formValuesFromCreateResults.personalityA);
-    setPersonalityADescription(formValuesFromCreateResults.personalityADescription);
     addResultP(formValuesFromCreateResults.personalityA,
       formValuesFromCreateResults.personalityADescription,
       0);
@@ -106,15 +81,6 @@ const CreateCore = ({
     addResultP(formValuesFromCreateResults.personalityD,
       formValuesFromCreateResults.personalityDDescription,
       3);
-
-    setPersonalityB(formValuesFromCreateResults.personalityB);
-    setPersonalityBDescription(formValuesFromCreateResults.personalityBDescription);
-
-    setPersonalityC(formValuesFromCreateResults.personalityC);
-    setPersonalityCDescription(formValuesFromCreateResults.personalityCDescription);
-
-    setPersonalityD(formValuesFromCreateResults.personalityD);
-    setPersonalityDDescription(formValuesFromCreateResults.personalityDDescription);
 
     storeResult(formValuesFromCreateResults.personalityA,
       formValuesFromCreateResults.personalityADescription, 0);
@@ -144,11 +110,11 @@ const CreateCore = ({
         question.choiceC,
         question.choiceD,
       ]);
-    setOneQuestion(true);
+    setOneQuestionP();
   };
 
   const handlePublish = () => {
-    setDone(true);
+    setDoneP();
     client.publishQuiz(quizId);
   };
 
@@ -171,19 +137,19 @@ const CreateCore = ({
       )}
 
       {
-    quizTitle && !personalityA && <CreateResults onSubmit={handleSubmitResults} />
+    quizTitle && (results.length < 4) && <CreateResults onSubmit={handleSubmitResults} />
   }
 
-      {!done && personalityA && (
+      {!done && (results.length > 0) && (
       <CreateQuestion
-        personalityA={personalityA}
-        personalityB={personalityB}
-        personalityC={personalityC}
-        personalityD={personalityD}
+        personalityA={results.find((element) => element.index === 0).name}
+        personalityB={results.find((element) => element.index === 1).name}
+        personalityC={results.find((element) => element.index === 2).name}
+        personalityD={results.find((element) => element.index === 3).name}
 
         onSubmitPublish={handlePublish}
         onSubmit={handleSubmitQuestion}
-        oneQuestion={oneQuestion}
+        oneQuestionDone={oneQuestionDone}
       />
       ) }
       {quizId && done && (
@@ -203,14 +169,24 @@ const mapStateToProps = (state) => ({
   formValuesFromCreateQuiz: getFormValues('CreateQuiz')(state),
   formValuesFromCreateResults: getFormValues('CreateResults')(state),
   formValuesFromCreateQuestion: getFormValues('CreateQuestion')(state),
+  quizId: state.mainReducer ? state.mainReducer.quizId : null,
+  quizTitle: state.mainReducer ? state.mainReducer.name : null,
+  results: state.mainReducer ? state.mainReducer.results : null,
+  questions: state.mainReducer ? state.mainReducer.questions : null,
+  done: state.mainReducer ? state.mainReducer.done : false,
+  oneQuestionDone: state.mainReducer ? state.mainReducer.oneQuestionDone : false,
 });
 
 // eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => (
   {
     createQuizP: (name, id) => dispatch(Creators.createQuiz(name, id)),
-    addResultP: (name, description, index) => dispatch(Creators.addResult(name, description, index)),
+    addResultP: (name, description, index) => {
+      dispatch(Creators.addResult(name, description, index));
+    },
     addQuestionP: (text, choices) => dispatch(Creators.addQuestion(text, choices)),
+    setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
+    setDoneP: () => dispatch(Creators.setDone()),
   });
 
 const Create = connect(mapStateToProps, mapDispatchToProps)(CreateCore);
