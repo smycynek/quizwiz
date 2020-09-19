@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import TakeQuiz from './components/TakeQuiz';
-import Create from './components/Create';
+import CreateMain from './containers/CreateMain';
 
 import ListQuizzes from './components/ListQuizzes';
 import reducer from './redux/reducers';
@@ -20,9 +20,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
 
-import CreateQuiz from './components/CreateQuiz';
-import CreateResults from './components/CreateResults';
-import CreateQuestion from './components/CreateQuestion';
+import CreateQuiz from './containers/CreateQuiz';
+import CreateResults from './components/CreateResultsForm';
+import CreateQuestion from './components/CreateQuestionForm';
 
 const store = createStore(
   reducer,
@@ -50,7 +50,7 @@ ReactDOM.render(
 
           <Route exact path="/create">
             <>
-              <Create />
+              <CreateMain />
             </>
           </Route>
 

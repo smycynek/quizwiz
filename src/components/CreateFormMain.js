@@ -8,19 +8,17 @@ import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
 import quizFreakClient from '../api/quizFreakClient';
-import CreateQuiz from './CreateQuiz';
-import CreateResults from './CreateResults';
-import CreateQuestion from './CreateQuestion';
+import CreateQuiz from '../containers/CreateQuiz';
+import CreateResults from '../containers/CreateResults';
+import CreateQuestion from '../containers/CreateQuestion';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
 import { Creators } from '../redux/types';
 
 // eslint-disable-next-line react/prop-types
-const CreateCore = ({
+const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
   createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
@@ -165,30 +163,4 @@ const CreateCore = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  formValuesFromCreateQuiz: getFormValues('CreateQuiz')(state),
-  formValuesFromCreateResults: getFormValues('CreateResults')(state),
-  formValuesFromCreateQuestion: getFormValues('CreateQuestion')(state),
-  quizId: state.mainReducer ? state.mainReducer.quizId : null,
-  quizTitle: state.mainReducer ? state.mainReducer.name : null,
-  results: state.mainReducer ? state.mainReducer.results : null,
-  questions: state.mainReducer ? state.mainReducer.questions : null,
-  done: state.mainReducer ? state.mainReducer.done : false,
-  oneQuestionDone: state.mainReducer ? state.mainReducer.oneQuestionDone : false,
-});
-
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => (
-  {
-    createQuizP: (name, id) => dispatch(Creators.createQuiz(name, id)),
-    addResultP: (name, description, index) => {
-      dispatch(Creators.addResult(name, description, index));
-    },
-    addQuestionP: (text, choices) => dispatch(Creators.addQuestion(text, choices)),
-    setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
-    setDoneP: () => dispatch(Creators.setDone()),
-  });
-
-const Create = connect(mapStateToProps, mapDispatchToProps)(CreateCore);
-
-export default Create;
+export default CreateFormMain;

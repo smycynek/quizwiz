@@ -3,8 +3,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { Field } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
@@ -13,7 +12,7 @@ const required = (value) => (value ? undefined : 'You must enter someting!');
 const tooShort = (value) => (value && value.length < 3 ? 'Make it good!' : undefined);
 
 // eslint-disable-next-line react/prop-types
-const CreateQuestionFormLayout = ({
+const CreateQuestionForm = ({
   invalid,
   onSubmit,
   onSubmitPublish,
@@ -129,19 +128,5 @@ const CreateQuestionFormLayout = ({
     </>
   );
 };
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state) => ({});
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => ({});
-
-const CreateQuestionForm = reduxForm({
-  // a unique name for the form
-  form: 'CreateQuestion',
-})(CreateQuestionFormLayout);
-const CreateQuestion = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CreateQuestionForm);
-
-export default CreateQuestion;
+export default CreateQuestionForm;
