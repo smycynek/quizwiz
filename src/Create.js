@@ -17,10 +17,15 @@ import CreateQuestion from './CreateQuestion';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
+// import { createQuiz, addResult, addQuestion } from './actions';
+
+import { Creators } from './types';
+
 // eslint-disable-next-line react/prop-types
 const CreateCore = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
+  createQuizP, addResultP, addQuestionP,
 }) => {
   const [quizTitle, setQuizTitle] = useState(null);
 
@@ -49,6 +54,7 @@ const CreateCore = ({
       .then((res) => {
         const { data } = res;
         setQuizId(data.id);
+        createQuizP(name, data.id);
       },
       (err) => {
         console.log(err);
@@ -85,6 +91,21 @@ const CreateCore = ({
   const handleSubmitResults = () => {
     setPersonalityA(formValuesFromCreateResults.personalityA);
     setPersonalityADescription(formValuesFromCreateResults.personalityADescription);
+    addResultP(formValuesFromCreateResults.personalityA,
+      formValuesFromCreateResults.personalityADescription,
+      0);
+
+    addResultP(formValuesFromCreateResults.personalityB,
+      formValuesFromCreateResults.personalityBDescription,
+      1);
+
+    addResultP(formValuesFromCreateResults.personalityC,
+      formValuesFromCreateResults.personalityCDescription,
+      2);
+
+    addResultP(formValuesFromCreateResults.personalityD,
+      formValuesFromCreateResults.personalityDDescription,
+      3);
 
     setPersonalityB(formValuesFromCreateResults.personalityB);
     setPersonalityBDescription(formValuesFromCreateResults.personalityBDescription);
@@ -115,6 +136,14 @@ const CreateCore = ({
     };
     storeQuestion(question.questionText, question.choiceA,
       question.choiceB, question.choiceC, question.choiceD);
+
+    addQuestionP(question.questionText,
+      [
+        question.choiceA,
+        question.choiceB,
+        question.choiceC,
+        question.choiceD,
+      ]);
     setOneQuestion(true);
   };
 
@@ -177,7 +206,12 @@ const mapStateToProps = (state) => ({
 });
 
 // eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => (
+  {
+    createQuizP: (name, id) => dispatch(Creators.createQuiz(name, id)),
+    addResultP: (name, description, index) => dispatch(Creators.addResult(name, description, index)),
+    addQuestionP: (text, choices) => dispatch(Creators.addQuestion(text, choices)),
+  });
 
 const Create = connect(mapStateToProps, mapDispatchToProps)(CreateCore);
 

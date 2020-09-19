@@ -12,6 +12,7 @@ import Create from './Create';
 
 import ListQuizzes from './ListQuizzes';
 import reducer from './reducers';
+import { INITIAL_STATE } from './types';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -25,7 +26,7 @@ import CreateQuestion from './CreateQuestion';
 
 const store = createStore(
   reducer,
-  {},
+  INITIAL_STATE,
   // eslint-disable-next-line no-underscore-dangle
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
