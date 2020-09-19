@@ -8,7 +8,7 @@ import {
 } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const required = (value) => (value ? undefined : 'You must enter all personality types!');
 const tooShort = (value) => (value && value.length < 1 ? 'Make it a good personality type!' : undefined);

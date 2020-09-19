@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import {
   Link,
 } from 'react-router-dom';
-import quizFreakClient from './quizFreakClient';
+import quizFreakClient from '../api/quizFreakClient';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
   <li key={datum[1]}>

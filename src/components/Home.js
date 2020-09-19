@@ -3,9 +3,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import quizFreakClient from './quizFreakClient';
+import quizFreakClient from '../api/quizFreakClient';
 
-import './index.css';
+import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // eslint-disable-next-line react/prop-types

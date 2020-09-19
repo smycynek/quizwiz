@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import CreateResults from '../CreateResults';
+import CreateResults from '../components/CreateResults';
 
 export default {
   title: 'Example/CreateResults',

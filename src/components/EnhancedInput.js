@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
+import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 /* eslint-disable react/jsx-filename-extension */

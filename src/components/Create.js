@@ -10,14 +10,14 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
-import quizFreakClient from './quizFreakClient';
+import quizFreakClient from '../api/quizFreakClient';
 import CreateQuiz from './CreateQuiz';
 import CreateResults from './CreateResults';
 import CreateQuestion from './CreateQuestion';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
-import { Creators } from './types';
+import { Creators } from '../redux/types';
 
 // eslint-disable-next-line react/prop-types
 const CreateCore = ({
