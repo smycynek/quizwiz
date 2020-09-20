@@ -138,6 +138,7 @@ const CreateFormMain = ({
         onSubmitPublish={handlePublish}
         onSubmit={handleSubmitQuestion}
         oneQuestionDone={oneQuestionDone}
+        questionIndex={questions.length + 1}
       />
       ) }
       {quizId && done && (
