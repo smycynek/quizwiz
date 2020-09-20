@@ -4,7 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 import { createReducer } from 'reduxsauce';
 import { Types, INITIAL_STATE } from './types';
 
-export const createQuiz = (state = INITIAL_STATE, action) => {
+export const createQuizSuccess = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     name: action.name,
@@ -57,7 +57,7 @@ export const oneQuestionDone = (state = INITIAL_STATE, action) => {
 
 // map our action types to our reducer functions
 export const HANDLERS = {
-  [Types.CREATE_QUIZ]: createQuiz,
+  [Types.CREATE_QUIZ_SUCCESS]: createQuizSuccess,
   [Types.ADD_RESULT]: addResult,
   [Types.ADD_QUESTION]: addQuestion,
   [Types.SET_DONE]: setDone,

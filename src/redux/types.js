@@ -1,7 +1,7 @@
 import { createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
-  createQuiz: ['name', 'quizId'],
+  createQuizSuccess: ['name', 'quizId'],
   addResult: ['name', 'description', 'index'],
   addQuestion: ['text', 'choices'],
   setDone: [],

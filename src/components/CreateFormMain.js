@@ -21,21 +21,11 @@ import { Creators } from '../redux/types';
 const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
-  createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
+  createQuizThunkP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
   done, oneQuestionDone, setDoneP, setOneQuestionP,
 }) => {
   const client = quizFreakClient();
 
-  const storeQuiz = (name) => {
-    client.createQuiz(name)
-      .then((res) => {
-        const { data } = res;
-        createQuizP(name, data.id);
-      },
-      (err) => {
-        console.log(err);
-      });
-  };
 
   const storeResult = (name, description, index) => {
     client.createResult(name, description, index, quizId)
@@ -60,7 +50,7 @@ const CreateFormMain = ({
   };
 
   const handleSubmitTitle = () => {
-    storeQuiz(formValuesFromCreateQuiz.quizTitle);
+    createQuizThunkP(formValuesFromCreateQuiz.quizTitle);
   };
 
   const handleSubmitResults = () => {

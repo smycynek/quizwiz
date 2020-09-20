@@ -5,7 +5,10 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import thunk from 'redux-thunk';
 
 import TakeQuiz from './components/TakeQuiz';
 import CreateMain from './containers/CreateMain';
@@ -27,8 +30,10 @@ import CreateQuestion from './components/CreateQuestionForm';
 const store = createStore(
   reducer,
   INITIAL_STATE,
+  composeWithDevTools(applyMiddleware(thunk)),
+
   // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 ReactDOM.render(
