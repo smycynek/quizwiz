@@ -21,21 +21,10 @@ import { Creators } from '../redux/types';
 const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
-  createQuizThunkP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
+  createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
   done, oneQuestionDone, setDoneP, setOneQuestionP,
 }) => {
   const client = quizFreakClient();
-
-
-  const storeResult = (name, description, index) => {
-    client.createResult(name, description, index, quizId)
-      .then((res) => {
-        const { data } = res;
-      },
-      (err) => {
-        console.log(err);
-      });
-  };
 
   const storeQuestion = (questionText, a, b, c, d) => {
     client.createQuestion(questionText,
@@ -50,34 +39,25 @@ const CreateFormMain = ({
   };
 
   const handleSubmitTitle = () => {
-    createQuizThunkP(formValuesFromCreateQuiz.quizTitle);
+    createQuizP(formValuesFromCreateQuiz.quizTitle);
   };
 
   const handleSubmitResults = () => {
     addResultP(formValuesFromCreateResults.personalityA,
       formValuesFromCreateResults.personalityADescription,
-      0);
+      0, quizId);
 
     addResultP(formValuesFromCreateResults.personalityB,
       formValuesFromCreateResults.personalityBDescription,
-      1);
+      1, quizId);
 
     addResultP(formValuesFromCreateResults.personalityC,
       formValuesFromCreateResults.personalityCDescription,
-      2);
+      2, quizId);
 
     addResultP(formValuesFromCreateResults.personalityD,
       formValuesFromCreateResults.personalityDDescription,
-      3);
-
-    storeResult(formValuesFromCreateResults.personalityA,
-      formValuesFromCreateResults.personalityADescription, 0);
-    storeResult(formValuesFromCreateResults.personalityB,
-      formValuesFromCreateResults.personalityBDescription, 1);
-    storeResult(formValuesFromCreateResults.personalityC,
-      formValuesFromCreateResults.personalityCDescription, 2);
-    storeResult(formValuesFromCreateResults.personalityD,
-      formValuesFromCreateResults.personalityDDescription, 3);
+      3, quizId);
   };
 
   const handleSubmitQuestion = () => {
@@ -105,7 +85,10 @@ const CreateFormMain = ({
     setDoneP();
     client.publishQuiz(quizId);
   };
-
+  console.log("THE RESULTS")
+  console.log(results)
+  console.log(results.length)
+  console.log("%%%")
   return (
     <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
@@ -128,7 +111,7 @@ const CreateFormMain = ({
     quizTitle && (results.length < 4) && <CreateResults onSubmit={handleSubmitResults} />
   }
 
-      {!done && (results.length > 0) && (
+      {!done && (results.length > 3) && (
       <CreateQuestion
         personalityA={results.find((element) => element.index === 0).name}
         personalityB={results.find((element) => element.index === 1).name}

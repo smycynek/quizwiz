@@ -12,7 +12,7 @@ export const createQuizSuccess = (state = INITIAL_STATE, action) => {
   };
 };
 
-export const addResult = (state = INITIAL_STATE, action) => {
+export const addResultSuccess = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     results: [
@@ -58,7 +58,7 @@ export const oneQuestionDone = (state = INITIAL_STATE, action) => {
 // map our action types to our reducer functions
 export const HANDLERS = {
   [Types.CREATE_QUIZ_SUCCESS]: createQuizSuccess,
-  [Types.ADD_RESULT]: addResult,
+  [Types.ADD_RESULT_SUCCESS]: addResultSuccess,
   [Types.ADD_QUESTION]: addQuestion,
   [Types.SET_DONE]: setDone,
   [Types.SET_ONE_QUESTION_DONE]: oneQuestionDone,

@@ -32,13 +32,13 @@ const mapStateToProps = (state) => ({
 // eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => (
   {
-    addResultP: (name, description, index) => {
-      dispatch(Creators.addResult(name, description, index));
+    addResultP: (name, description, index, quizId) => {
+      dispatch(Creators.addResult(name, description, index, quizId));
     },
     addQuestionP: (text, choices) => dispatch(Creators.addQuestion(text, choices)),
     setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
     setDoneP: () => dispatch(Creators.setDone()),
-    createQuizThunkP: (name) => dispatch(createQuizThunk(name)),
+    createQuizP: (name) => dispatch(Creators.createQuiz(name)),
   });
 
 const CreateMain = connect(mapStateToProps, mapDispatchToProps)(CreateFormMain);

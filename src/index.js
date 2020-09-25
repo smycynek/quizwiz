@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import thunk from 'redux-thunk';
+
 
 import TakeQuiz from './components/TakeQuiz';
 import CreateMain from './containers/CreateMain';
@@ -20,6 +20,7 @@ import { INITIAL_STATE } from './redux/types';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
 
@@ -27,14 +28,20 @@ import CreateQuiz from './containers/CreateQuiz';
 import CreateResults from './components/CreateResultsForm';
 import CreateQuestion from './components/CreateQuestionForm';
 
+import { rootSaga } from './redux/sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
   reducer,
   INITIAL_STATE,
-  composeWithDevTools(applyMiddleware(thunk)),
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
 
   // eslint-disable-next-line no-underscore-dangle
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
