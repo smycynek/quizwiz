@@ -1,12 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable arrow-body-style */
 /* eslint-disable padded-blocks */
+
 import {
   call, put, takeEvery, takeLatest,
 } from 'redux-saga/effects';
-import quizFreakClient from '../api/quizFreakClient';
-
 import { Creators, Types } from './types';
+import quizFreakClient from '../api/quizFreakClient';
 
 const client = quizFreakClient();
 

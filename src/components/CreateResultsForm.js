@@ -1,8 +1,10 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
@@ -10,7 +12,6 @@ import '../index.css';
 const required = (value) => (value ? undefined : 'You must enter all personality types!');
 const tooShort = (value) => (value && value.length < 1 ? 'Make it a good personality type!' : undefined);
 
-// eslint-disable-next-line react/prop-types
 const CreateResultsForm = ({ invalid, onSubmit }) => (
   <>
     <div>
@@ -56,4 +57,8 @@ const CreateResultsForm = ({ invalid, onSubmit }) => (
   </>
 );
 
+CreateResultsForm.propTypes = {
+  invalid: PropTypes.bool,
+  onSubmit: PropTypes.func,
+};
 export default CreateResultsForm;

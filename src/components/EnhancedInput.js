@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -8,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 /* eslint-disable react/jsx-filename-extension */
 const EnhancedInput = ({
-  // eslint-disable-next-line react/prop-types
   input, label, placeholder, type, meta: { touched, error },
 }) => (
   <div>
@@ -21,6 +21,8 @@ const EnhancedInput = ({
 );
 
 EnhancedInput.propTypes = {
+  input: PropTypes.object,
+  placeholder: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,
   meta: PropTypes.shape({

@@ -1,7 +1,9 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import CasualQuiz from 'react-casual-quiz/lib';
 import { Link } from 'react-router-dom';
 import quizFreakClient from '../api/quizFreakClient';
@@ -9,9 +11,7 @@ import quizFreakClient from '../api/quizFreakClient';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
-// eslint-disable-next-line react/prop-types
 const TakeQuiz = ({ match }) => {
-  // eslint-disable-next-line react/prop-types
   const { params: { id } } = match;
   const client = quizFreakClient();
   const [quizData, setQuizData] = useState(null);
@@ -55,6 +55,10 @@ const TakeQuiz = ({ match }) => {
       </div>
     </>
   );
+};
+
+TakeQuiz.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default TakeQuiz;

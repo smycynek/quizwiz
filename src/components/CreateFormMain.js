@@ -1,31 +1,26 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React from 'react';
 import {
   Link,
 } from 'react-router-dom';
-import quizFreakClient from '../api/quizFreakClient';
+import PropTypes from 'prop-types';
 import CreateQuiz from '../containers/CreateQuiz';
 import CreateResults from '../containers/CreateResults';
 import CreateQuestion from '../containers/CreateQuestion';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
-import { Creators } from '../redux/types';
-
-// eslint-disable-next-line react/prop-types
 const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
   createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
   done, oneQuestionDone, setDoneP, setOneQuestionP, reset,
 }) => {
-  const client = quizFreakClient();
-
   const handleSubmitTitle = () => {
     createQuizP(formValuesFromCreateQuiz.quizTitle);
   };
@@ -71,7 +66,6 @@ const CreateFormMain = ({
     setDoneP(quizId);
   };
 
-
   return (
     <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
@@ -91,10 +85,10 @@ const CreateFormMain = ({
       )}
 
       {
-    quizTitle && (results.length < 4) && <CreateResults onSubmit={handleSubmitResults} />
+    quizTitle && results && (results.length < 4) && <CreateResults onSubmit={handleSubmitResults} />
   }
 
-      {!done && (results.length > 3) && (
+      {!done && results && (results.length > 3) && (
       <CreateQuestion
         personalityA={results.find((element) => element.index === 0).name}
         personalityB={results.find((element) => element.index === 1).name}
@@ -118,6 +112,24 @@ const CreateFormMain = ({
       </div>
     </div>
   );
+};
+
+CreateFormMain.propTypes = {
+  formValuesFromCreateQuiz: PropTypes.object,
+  formValuesFromCreateResults: PropTypes.object,
+  formValuesFromCreateQuestion: PropTypes.object,
+  createQuizP: PropTypes.func.isRequired,
+  addResultP: PropTypes.func.isRequired,
+  addQuestionP: PropTypes.func.isRequired,
+  quizId: PropTypes.string,
+  quizTitle: PropTypes.string,
+  results: PropTypes.array.isRequired,
+  questions: PropTypes.array.isRequired,
+  done: PropTypes.bool.isRequired,
+  oneQuestionDone: PropTypes.bool.isRequired,
+  setDoneP: PropTypes.func.isRequired,
+  setOneQuestionP: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
 };
 
 export default CreateFormMain;

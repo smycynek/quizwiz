@@ -7,8 +7,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-
+import createSagaMiddleware from 'redux-saga';
 
 import TakeQuiz from './components/TakeQuiz';
 import CreateMain from './containers/CreateMain';
@@ -20,7 +19,6 @@ import { INITIAL_STATE } from './redux/types';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
 

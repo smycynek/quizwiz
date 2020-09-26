@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -11,7 +11,6 @@ import '../index.css';
 const required = (value) => (value ? undefined : 'You must enter someting!');
 const tooShort = (value) => (value && value.length < 3 ? 'Make it good!' : undefined);
 
-// eslint-disable-next-line react/prop-types
 const CreateQuestionForm = ({
   invalid,
   onSubmit,
@@ -22,11 +21,9 @@ const CreateQuestionForm = ({
   personalityD,
   oneQuestionDone,
   questionIndex,
-  reset,
 }) => {
   const onSubmitWrapper = () => {
     onSubmit();
-    reset();
   };
 
   const publish = (invalidState) => {
@@ -135,6 +132,18 @@ const CreateQuestionForm = ({
       </div>
     </>
   );
+};
+
+CreateQuestionForm.propTypes = {
+  invalid: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  onSubmitPublish: PropTypes.func,
+  personalityA: PropTypes.string,
+  personalityB: PropTypes.string,
+  personalityC: PropTypes.string,
+  personalityD: PropTypes.string,
+  oneQuestionDone: PropTypes.bool,
+  questionIndex: PropTypes.number,
 };
 
 export default CreateQuestionForm;

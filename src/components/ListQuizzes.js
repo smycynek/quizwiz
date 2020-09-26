@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React, { useState, useEffect } from 'react';
 import {
   Link,
@@ -15,7 +15,6 @@ const QuizList = ({ data }) => data.map((datum) => (
   </li>
 ));
 
-// eslint-disable-next-line react/prop-types
 const ListQuizzes = () => {
   const client = quizFreakClient();
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,6 @@ import quizFreakClient from '../api/quizFreakClient';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// eslint-disable-next-line react/prop-types
 const Home = () => {
   const client = quizFreakClient();
   function preWarm() {

@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
-import React from 'react';
 
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
@@ -28,7 +24,6 @@ const mapStateToProps = (state) => ({
   oneQuestionDone: state.mainReducer ? state.mainReducer.oneQuestionDone : false,
 });
 
-// eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => (
   {
     addResultP: (name, description, index, quizId) => {

@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
@@ -10,7 +11,6 @@ import '../index.css';
 const required = (value) => (value ? undefined : 'You must have a quiz title!');
 const tooShort = (value) => (value && value.length < 5 ? 'Make it a good title!' : undefined);
 
-// eslint-disable-next-line react/prop-types
 const CreateQuizForm = ({ invalid, onSubmit }) => (
   <>
     <form>
@@ -28,4 +28,8 @@ const CreateQuizForm = ({ invalid, onSubmit }) => (
   </>
 );
 
+CreateQuizForm.propTypes = {
+  invalid: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 export default CreateQuizForm;
