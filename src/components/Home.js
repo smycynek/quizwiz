@@ -58,7 +58,7 @@ const Home = () => {
       <h4 className="text-secondary">Work in Progress - Known bugs/limitations...</h4>
       <ol>
         <li>
-          The back-end is hosted on free tier service.  It needs wake up if not in
+          The back-end is hosted on free-tier service.  It needs wake up if not in
           use for a while. Go to
           {' '}
           <Link to="/list">See existing quizzes...</Link>
@@ -72,7 +72,7 @@ const Home = () => {
           No support to continue authoring a quiz later.
         </li>
         <li>
-          No real error notification or handling.
+          Error handling workflow could be improved.
         </li>
         <li>
           No support for uploading photos for each personality.
