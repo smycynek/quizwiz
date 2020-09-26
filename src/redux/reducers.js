@@ -26,13 +26,13 @@ export const addResultSuccess = (state = INITIAL_STATE, action) => {
   };
 };
 
-export const addQuestion = (state = INITIAL_STATE, action) => {
+export const addQuestionSuccess = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     questions: [
       ...state.questions,
       {
-        name: action.text,
+        text: action.text,
         choices: action.choices,
       },
     ],
@@ -40,7 +40,7 @@ export const addQuestion = (state = INITIAL_STATE, action) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-export const setDone = (state = INITIAL_STATE, action) => {
+export const setDoneSuccess = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     done: true,
@@ -59,8 +59,8 @@ export const oneQuestionDone = (state = INITIAL_STATE, action) => {
 export const HANDLERS = {
   [Types.CREATE_QUIZ_SUCCESS]: createQuizSuccess,
   [Types.ADD_RESULT_SUCCESS]: addResultSuccess,
-  [Types.ADD_QUESTION]: addQuestion,
-  [Types.SET_DONE]: setDone,
+  [Types.ADD_QUESTION_SUCCESS]: addQuestionSuccess,
+  [Types.SET_DONE_SUCCESS]: setDoneSuccess,
   [Types.SET_ONE_QUESTION_DONE]: oneQuestionDone,
 };
 

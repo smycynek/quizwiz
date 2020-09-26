@@ -43,7 +43,41 @@ function* createResultSaga(action) {
   }
 }
 
+function* createQuestionSaga(action) {
+  try {
+    yield call(
+      client.createQuestion,
+      action.text,
+      action.choices,
+      action.quizId,
+    );
+    yield put({
+      type: 'ADD_QUESTION_SUCCESS',
+      text: action.text,
+      choices: action.choices,
+    });
+  } catch (e) {
+    console.log('ERROR');
+  }
+}
+
+function* setDoneSaga(action) {
+  try {
+    yield call(
+      client.publishQuiz,
+      action.quizId,
+    );
+    yield put({
+      type: 'SET_DONE_SUCCESS',
+    });
+  } catch (e) {
+    console.log('ERROR');
+  }
+}
+
 export function* rootSaga() {
   yield takeLatest('CREATE_QUIZ', createQuizSaga);
   yield takeEvery('ADD_RESULT', createResultSaga);
+  yield takeEvery('ADD_QUESTION', createQuestionSaga);
+  yield takeEvery('SET_DONE', setDoneSaga);
 }

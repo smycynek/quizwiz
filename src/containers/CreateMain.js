@@ -15,7 +15,6 @@ import '../index.css';
 import { Creators } from '../redux/types';
 
 import CreateFormMain from '../components/CreateFormMain';
-import { createQuizThunk } from '../redux/thunks';
 
 const mapStateToProps = (state) => ({
   formValuesFromCreateQuiz: getFormValues('CreateQuiz')(state),
@@ -35,9 +34,9 @@ const mapDispatchToProps = (dispatch) => (
     addResultP: (name, description, index, quizId) => {
       dispatch(Creators.addResult(name, description, index, quizId));
     },
-    addQuestionP: (text, choices) => dispatch(Creators.addQuestion(text, choices)),
+    addQuestionP: (text, choices, quizId) => dispatch(Creators.addQuestion(text, choices, quizId)),
     setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
-    setDoneP: () => dispatch(Creators.setDone()),
+    setDoneP: (quizId) => dispatch(Creators.setDone(quizId)),
     createQuizP: (name) => dispatch(Creators.createQuiz(name)),
   });
 

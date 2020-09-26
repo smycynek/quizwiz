@@ -5,8 +5,10 @@ const { Types, Creators } = createActions({
   createQuizSuccess: ['name', 'quizId'],
   addResult: ['name', 'description', 'index', 'quizId'],
   addResultSuccess: ['name', 'description', 'index'],
-  addQuestion: ['text', 'choices'],
-  setDone: [],
+  addQuestion: ['text', 'choices', 'quizId'],
+  addQuestionSuccess: ['text', 'choices'],
+  setDone: ['quizId'],
+  setDoneSuccess: [],
   setOneQuestionDone: [],
 }, {});
 

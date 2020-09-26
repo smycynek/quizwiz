@@ -26,18 +26,6 @@ const CreateFormMain = ({
 }) => {
   const client = quizFreakClient();
 
-  const storeQuestion = (questionText, a, b, c, d) => {
-    client.createQuestion(questionText,
-      [a, b, c, d],
-      quizId)
-      .then((res) => {
-        const { data } = res;
-      },
-      (err) => {
-        console.log(err);
-      });
-  };
-
   const handleSubmitTitle = () => {
     createQuizP(formValuesFromCreateQuiz.quizTitle);
   };
@@ -68,8 +56,6 @@ const CreateFormMain = ({
       choiceC: formValuesFromCreateQuestion.choiceC,
       choiceD: formValuesFromCreateQuestion.choiceD,
     };
-    storeQuestion(question.questionText, question.choiceA,
-      question.choiceB, question.choiceC, question.choiceD);
 
     addQuestionP(question.questionText,
       [
@@ -77,18 +63,13 @@ const CreateFormMain = ({
         question.choiceB,
         question.choiceC,
         question.choiceD,
-      ]);
+      ], quizId);
     setOneQuestionP();
   };
 
   const handlePublish = () => {
-    setDoneP();
-    client.publishQuiz(quizId);
+    setDoneP(quizId);
   };
-  console.log("THE RESULTS")
-  console.log(results)
-  console.log(results.length)
-  console.log("%%%")
   return (
     <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
