@@ -1,8 +1,10 @@
 /* eslint-disable arrow-body-style */
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { createReducer } from 'reduxsauce';
+import { createReducer, resettableReducer } from 'reduxsauce';
 import { Types, INITIAL_STATE } from './types';
+
+const resettable = resettableReducer('RESET');
 
 export const createQuizSuccess = (state = INITIAL_STATE, action) => {
   return {
@@ -68,7 +70,7 @@ const mainReducer = createReducer(INITIAL_STATE, HANDLERS);
 
 const reducer = combineReducers({
   form: formReducer,
-  mainReducer,
+  mainReducer: resettable(mainReducer),
 });
 
 export default reducer;

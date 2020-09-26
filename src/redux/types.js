@@ -10,6 +10,7 @@ const { Types, Creators } = createActions({
   setDone: ['quizId'],
   setDoneSuccess: [],
   setOneQuestionDone: [],
+  reset: [],
 }, {});
 
 export const INITIAL_STATE = {

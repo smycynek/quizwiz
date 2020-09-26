@@ -38,6 +38,7 @@ const mapDispatchToProps = (dispatch) => (
     setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
     setDoneP: (quizId) => dispatch(Creators.setDone(quizId)),
     createQuizP: (name) => dispatch(Creators.createQuiz(name)),
+    reset: () => dispatch(Creators.reset()),
   });
 
 const CreateMain = connect(mapStateToProps, mapDispatchToProps)(CreateFormMain);

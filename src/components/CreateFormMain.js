@@ -22,7 +22,7 @@ const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
   createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
-  done, oneQuestionDone, setDoneP, setOneQuestionP,
+  done, oneQuestionDone, setDoneP, setOneQuestionP, reset,
 }) => {
   const client = quizFreakClient();
 
@@ -70,6 +70,8 @@ const CreateFormMain = ({
   const handlePublish = () => {
     setDoneP(quizId);
   };
+
+
   return (
     <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
@@ -108,11 +110,11 @@ const CreateFormMain = ({
       {quizId && done && (
       <>
         <div>Your quiz:</div>
-        <Link to={`/take/${quizId}`}>{quizTitle}</Link>
+        <Link onClick={reset} to={`/take/${quizId}`}>{quizTitle}</Link>
       </>
       )}
       <div>
-        <Link to="/">Home...</Link>
+        <Link onClick={reset} to="/">Home...</Link>
       </div>
     </div>
   );
