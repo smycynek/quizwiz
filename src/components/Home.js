@@ -55,7 +55,7 @@ const Home = () => {
 </div>
 )}
       <hr />
-      <h3 className="text-secondary">Work in Progress - Known bugs/limitations...</h3>
+      <h4 className="text-secondary">Work in Progress - Known bugs/limitations...</h4>
       <ol>
         <li>
           The back-end is hosted on free tier service.  It needs wake up if not in
@@ -81,6 +81,8 @@ const Home = () => {
           Plenty of other things -- I work on this a little bit at a time :).
         </li>
       </ol>
+      <hr />
+      <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
     </div>
   );
 };
