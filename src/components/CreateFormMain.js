@@ -9,6 +9,8 @@ import {
   Link,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CreateQuiz from '../containers/CreateQuiz';
 import CreateResults from '../containers/CreateResults';
 import CreateQuestion from '../containers/CreateQuestion';
@@ -101,6 +103,7 @@ const CreateFormMain = ({
         questionIndex={questions.length + 1}
       />
       ) }
+      <ToastContainer />
       {quizId && done && (
       <>
         <div>Your quiz:</div>

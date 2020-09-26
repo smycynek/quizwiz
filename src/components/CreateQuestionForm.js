@@ -146,6 +146,7 @@ CreateQuestionForm.propTypes = {
   personalityD: PropTypes.string,
   oneQuestionDone: PropTypes.bool,
   questionIndex: PropTypes.number,
+  reset: PropTypes.func,
 };
 
 export default CreateQuestionForm;
