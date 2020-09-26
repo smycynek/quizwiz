@@ -21,8 +21,10 @@ const CreateQuestionForm = ({
   personalityD,
   oneQuestionDone,
   questionIndex,
+  reset,
 }) => {
   const onSubmitWrapper = () => {
+    reset();
     onSubmit();
   };
 
