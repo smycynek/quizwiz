@@ -5,30 +5,41 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 
-import TakeQuiz from './TakeQuiz';
-import Create from './Create';
+import TakeQuiz from './components/TakeQuiz';
+import CreateMain from './containers/CreateMain';
 
-import ListQuizzes from './ListQuizzes';
-import reducer from './reducers';
+import ListQuizzes from './components/ListQuizzes';
+import reducer from './redux/reducers';
+import { INITIAL_STATE } from './redux/types';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import * as serviceWorker from './serviceWorker';
-import Home from './Home';
+import Home from './components/Home';
 
-import CreateQuiz from './CreateQuiz';
-import CreateResults from './CreateResults';
-import CreateQuestion from './CreateQuestion';
+import CreateQuiz from './containers/CreateQuiz';
+import CreateResults from './components/CreateResultsForm';
+import CreateQuestion from './components/CreateQuestionForm';
+
+import { rootSaga } from './redux/sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   reducer,
-  {},
+  INITIAL_STATE,
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+
   // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -49,7 +60,7 @@ ReactDOM.render(
 
           <Route exact path="/create">
             <>
-              <Create />
+              <CreateMain />
             </>
           </Route>
 

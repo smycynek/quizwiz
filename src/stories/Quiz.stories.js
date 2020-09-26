@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import CreateQuiz from '../CreateQuiz';
+import CreateQuiz from '../containers/CreateQuiz';
 
 export default {
   title: 'Example/CreateQuiz',

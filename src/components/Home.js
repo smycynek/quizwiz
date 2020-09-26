@@ -1,14 +1,14 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import quizFreakClient from './quizFreakClient';
+import quizFreakClient from '../api/quizFreakClient';
 
-import './index.css';
+import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// eslint-disable-next-line react/prop-types
 const Home = () => {
   const client = quizFreakClient();
   function preWarm() {
@@ -66,19 +66,16 @@ const Home = () => {
           and wait a few seconds to activate it if you have problems.
         </li>
         <li>
-          Refreshing the browser rests your session.
-        </li>
-        <li>
-          Still need redux/saga framework to properly manage back-end.
+          Refreshing the browser resets your session.
         </li>
         <li>
           No support to continue authoring a quiz later.
         </li>
         <li>
-          No support for uploading photos for each personality.
+          No real error notification or handling.
         </li>
         <li>
-          Overall CSS styling could be a little nicer and more consistent.
+          No support for uploading photos for each personality.
         </li>
         <li>
           Plenty of other things -- I work on this a little bit at a time :).

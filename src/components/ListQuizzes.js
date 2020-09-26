@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
+
 import React, { useState, useEffect } from 'react';
 import {
   Link,
 } from 'react-router-dom';
-import quizFreakClient from './quizFreakClient';
+import quizFreakClient from '../api/quizFreakClient';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
   <li key={datum[1]}>
@@ -15,7 +15,6 @@ const QuizList = ({ data }) => data.map((datum) => (
   </li>
 ));
 
-// eslint-disable-next-line react/prop-types
 const ListQuizzes = () => {
   const client = quizFreakClient();
 

@@ -1,19 +1,17 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-
-import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const required = (value) => (value ? undefined : 'You must enter someting!');
 const tooShort = (value) => (value && value.length < 3 ? 'Make it good!' : undefined);
 
-// eslint-disable-next-line react/prop-types
-const CreateQuestionFormLayout = ({
+const CreateQuestionForm = ({
   invalid,
   onSubmit,
   onSubmitPublish,
@@ -21,12 +19,13 @@ const CreateQuestionFormLayout = ({
   personalityB,
   personalityC,
   personalityD,
-  oneQuestion,
+  oneQuestionDone,
+  questionIndex,
   reset,
 }) => {
   const onSubmitWrapper = () => {
-    onSubmit();
     reset();
+    onSubmit();
   };
 
   const publish = (invalidState) => {
@@ -39,6 +38,13 @@ const CreateQuestionFormLayout = ({
   return (
     <>
       <div>
+        <h4 className="text-secondary">
+          {' '}
+          Question
+          {' '}
+          {questionIndex}
+          {' '}
+        </h4>
         <h4 className="text-secondary">
           Add a question, pairing the choices with the personality outcomes you
           entered previously.
@@ -116,7 +122,7 @@ const CreateQuestionFormLayout = ({
           </div>
           <div style={{ padding: '5px' }}>
             <button
-              disabled={!oneQuestion && invalid}
+              disabled={!oneQuestionDone && invalid}
               className="btn btn-primary"
               type="button"
               onClick={() => publish(invalid)}
@@ -129,19 +135,17 @@ const CreateQuestionFormLayout = ({
     </>
   );
 };
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state) => ({});
 
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => ({});
+CreateQuestionForm.propTypes = {
+  invalid: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  onSubmitPublish: PropTypes.func,
+  personalityA: PropTypes.string,
+  personalityB: PropTypes.string,
+  personalityC: PropTypes.string,
+  personalityD: PropTypes.string,
+  oneQuestionDone: PropTypes.bool,
+  questionIndex: PropTypes.number,
+};
 
-const CreateQuestionForm = reduxForm({
-  // a unique name for the form
-  form: 'CreateQuestion',
-})(CreateQuestionFormLayout);
-const CreateQuestion = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CreateQuestionForm);
-
-export default CreateQuestion;
+export default CreateQuestionForm;

@@ -1,20 +1,18 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
-import { connect } from 'react-redux';
-import {
-  reduxForm, Field,
-} from 'redux-form';
+import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const required = (value) => (value ? undefined : 'You must enter all personality types!');
 const tooShort = (value) => (value && value.length < 1 ? 'Make it a good personality type!' : undefined);
 
-// eslint-disable-next-line react/prop-types
-const CreateResultsFormLayout = ({ invalid, onSubmit }) => (
+const CreateResultsForm = ({ invalid, onSubmit }) => (
   <>
     <div>
       <h4 className="text-secondary">
@@ -59,17 +57,8 @@ const CreateResultsFormLayout = ({ invalid, onSubmit }) => (
   </>
 );
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state) => ({
-});
-
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => ({});
-
-const CreateResultsForm = reduxForm({
-  // a unique name for the form
-  form: 'CreateResults',
-})(CreateResultsFormLayout);
-const CreateResults = connect(mapStateToProps, mapDispatchToProps)(CreateResultsForm);
-
-export default CreateResults;
+CreateResultsForm.propTypes = {
+  invalid: PropTypes.bool,
+  onSubmit: PropTypes.func,
+};
+export default CreateResultsForm;

@@ -2,19 +2,16 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
-import { connect } from 'react-redux';
-import {
-  reduxForm, Field,
-} from 'redux-form';
+import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import EnhancedInput from './EnhancedInput';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 const required = (value) => (value ? undefined : 'You must have a quiz title!');
 const tooShort = (value) => (value && value.length < 5 ? 'Make it a good title!' : undefined);
 
-// eslint-disable-next-line react/prop-types
-const CreateQuizFormLayout = ({ invalid, onSubmit }) => (
+const CreateQuizForm = ({ invalid, onSubmit }) => (
   <>
     <form>
       <div>
@@ -31,16 +28,8 @@ const CreateQuizFormLayout = ({ invalid, onSubmit }) => (
   </>
 );
 
-// eslint-disable-next-line no-unused-vars
-const mapStateToProps = (state) => ({
-});
-
-// eslint-disable-next-line no-unused-vars
-const mapDispatchToProps = (dispatch) => ({});
-
-const CreateQuizForm = reduxForm({
-  // a unique name for the form
-  form: 'CreateQuiz',
-})(CreateQuizFormLayout);
-const CreateQuiz = connect(mapStateToProps, mapDispatchToProps)(CreateQuizForm);
-export default CreateQuiz;
+CreateQuizForm.propTypes = {
+  invalid: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+export default CreateQuizForm;
