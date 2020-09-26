@@ -26,13 +26,15 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
   {
-    addResultP: (name, description, index, quizId) => {
+    addResultWorkflow: (name, description, index, quizId) => {
       dispatch(Creators.addResult(name, description, index, quizId));
     },
-    addQuestionP: (text, choices, quizId) => dispatch(Creators.addQuestion(text, choices, quizId)),
-    setOneQuestionP: () => dispatch(Creators.setOneQuestionDone()),
-    setDoneP: (quizId) => dispatch(Creators.setDone(quizId)),
-    createQuizP: (name) => dispatch(Creators.createQuiz(name)),
+    addQuestionWorkflow: (text, choices, quizId) => {
+      dispatch(Creators.addQuestion(text, choices, quizId));
+    },
+    setOneQuestionDone: () => dispatch(Creators.setOneQuestionDone()),
+    setDoneWorkflow: (quizId) => dispatch(Creators.setDone(quizId)),
+    createQuizWorkflow: (name) => dispatch(Creators.createQuiz(name)),
     reset: () => dispatch(Creators.reset()),
   });
 

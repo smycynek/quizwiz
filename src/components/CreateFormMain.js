@@ -18,27 +18,27 @@ import '../index.css';
 const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
-  createQuizP, addResultP, addQuestionP, quizId, quizTitle, results, questions,
-  done, oneQuestionDone, setDoneP, setOneQuestionP, reset,
+  createQuizWorkflow, addResultWorkflow, addQuestionWorkflow, quizId, quizTitle, results, questions,
+  done, oneQuestionDone, setDoneWorkflow, setOneQuestionDone, reset,
 }) => {
   const handleSubmitTitle = () => {
-    createQuizP(formValuesFromCreateQuiz.quizTitle);
+    createQuizWorkflow(formValuesFromCreateQuiz.quizTitle);
   };
 
   const handleSubmitResults = () => {
-    addResultP(formValuesFromCreateResults.personalityA,
+    addResultWorkflow(formValuesFromCreateResults.personalityA,
       formValuesFromCreateResults.personalityADescription,
       0, quizId);
 
-    addResultP(formValuesFromCreateResults.personalityB,
+    addResultWorkflow(formValuesFromCreateResults.personalityB,
       formValuesFromCreateResults.personalityBDescription,
       1, quizId);
 
-    addResultP(formValuesFromCreateResults.personalityC,
+    addResultWorkflow(formValuesFromCreateResults.personalityC,
       formValuesFromCreateResults.personalityCDescription,
       2, quizId);
 
-    addResultP(formValuesFromCreateResults.personalityD,
+    addResultWorkflow(formValuesFromCreateResults.personalityD,
       formValuesFromCreateResults.personalityDDescription,
       3, quizId);
   };
@@ -52,18 +52,18 @@ const CreateFormMain = ({
       choiceD: formValuesFromCreateQuestion.choiceD,
     };
 
-    addQuestionP(question.questionText,
+    addQuestionWorkflow(question.questionText,
       [
         question.choiceA,
         question.choiceB,
         question.choiceC,
         question.choiceD,
       ], quizId);
-    setOneQuestionP();
+    setOneQuestionDone();
   };
 
   const handlePublish = () => {
-    setDoneP(quizId);
+    setDoneWorkflow(quizId);
   };
 
   return (
@@ -118,17 +118,17 @@ CreateFormMain.propTypes = {
   formValuesFromCreateQuiz: PropTypes.object,
   formValuesFromCreateResults: PropTypes.object,
   formValuesFromCreateQuestion: PropTypes.object,
-  createQuizP: PropTypes.func.isRequired,
-  addResultP: PropTypes.func.isRequired,
-  addQuestionP: PropTypes.func.isRequired,
+  createQuizWorkflow: PropTypes.func.isRequired,
+  addResultWorkflow: PropTypes.func.isRequired,
+  addQuestionWorkflow: PropTypes.func.isRequired,
   quizId: PropTypes.string,
   quizTitle: PropTypes.string,
   results: PropTypes.array.isRequired,
   questions: PropTypes.array.isRequired,
   done: PropTypes.bool.isRequired,
   oneQuestionDone: PropTypes.bool.isRequired,
-  setDoneP: PropTypes.func.isRequired,
-  setOneQuestionP: PropTypes.func.isRequired,
+  setDoneWorkflow: PropTypes.func.isRequired,
+  setOneQuestionDone: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
 };
 
