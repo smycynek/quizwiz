@@ -13,6 +13,7 @@ const { Types, Creators } = createActions({
 }, {});
 
 export const INITIAL_STATE = {
+  quizId: null,
   name: null,
   done: false,
   oneQuestionDone: false,

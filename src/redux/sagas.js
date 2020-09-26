@@ -6,18 +6,15 @@ import {
 } from 'redux-saga/effects';
 import quizFreakClient from '../api/quizFreakClient';
 
-import { Creators } from './types';
+import { Creators, Types } from './types';
 
 const client = quizFreakClient();
 
 function* createQuizSaga(action) {
   try {
     const result = yield call(client.createQuiz, action.name);
-    yield put({
-      type: 'CREATE_QUIZ_SUCCESS',
-      name: action.name,
-      quizId: result.data.id,
-    });
+    const qs = Creators.createQuizSuccess(action.name, result.data.id);
+    yield put(qs);
   } catch (e) {
     console.log('ERROR');
   }
@@ -32,12 +29,9 @@ function* createResultSaga(action) {
       action.index,
       action.quizId,
     );
-    yield put({
-      type: 'ADD_RESULT_SUCCESS',
-      name: action.name,
-      description: action.description,
-      index: action.index,
-    });
+    yield put(
+      Creators.addResultSuccess(action.name, action.description, action.index),
+    );
   } catch (e) {
     console.log('ERROR');
   }
@@ -51,11 +45,7 @@ function* createQuestionSaga(action) {
       action.choices,
       action.quizId,
     );
-    yield put({
-      type: 'ADD_QUESTION_SUCCESS',
-      text: action.text,
-      choices: action.choices,
-    });
+    yield put(Creators.addQuestionSuccess(action.text, action.choices));
   } catch (e) {
     console.log('ERROR');
   }
@@ -67,17 +57,15 @@ function* setDoneSaga(action) {
       client.publishQuiz,
       action.quizId,
     );
-    yield put({
-      type: 'SET_DONE_SUCCESS',
-    });
+    yield put(Creators.setDoneSuccess());
   } catch (e) {
     console.log('ERROR');
   }
 }
 
 export function* rootSaga() {
-  yield takeLatest('CREATE_QUIZ', createQuizSaga);
-  yield takeEvery('ADD_RESULT', createResultSaga);
-  yield takeEvery('ADD_QUESTION', createQuestionSaga);
-  yield takeEvery('SET_DONE', setDoneSaga);
+  yield takeLatest(Types.CREATE_QUIZ, createQuizSaga);
+  yield takeEvery(Types.ADD_RESULT, createResultSaga);
+  yield takeEvery(Types.ADD_QUESTION, createQuestionSaga);
+  yield takeEvery(Types.SET_DONE, setDoneSaga);
 }

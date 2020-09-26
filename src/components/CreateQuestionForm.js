@@ -39,7 +39,13 @@ const CreateQuestionForm = ({
   return (
     <>
       <div>
-        <h4 className="text-secondary"> Question {questionIndex} </h4>
+        <h4 className="text-secondary">
+          {' '}
+          Question
+          {' '}
+          {questionIndex}
+          {' '}
+        </h4>
         <h4 className="text-secondary">
           Add a question, pairing the choices with the personality outcomes you
           entered previously.
