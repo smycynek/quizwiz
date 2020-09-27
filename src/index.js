@@ -25,6 +25,7 @@ import Home from './components/Home';
 import CreateQuiz from './containers/CreateQuiz';
 import CreateResults from './components/CreateResultsForm';
 import CreateQuestion from './components/CreateQuestionForm';
+import Notes from './components/Notes';
 
 import { rootSaga } from './redux/sagas';
 
@@ -61,6 +62,12 @@ ReactDOM.render(
           <Route exact path="/create">
             <>
               <CreateMain />
+            </>
+          </Route>
+
+          <Route exact path="/notes">
+            <>
+              <Notes />
             </>
           </Route>
 

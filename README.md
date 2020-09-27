@@ -1,6 +1,9 @@
-# Quizwiz
+# Quiz Wiz
 
-# A front-end for QuizFreak, a quiz-building app
+# A quiz-building UI and front-end for QuizFreak.
+
+Version 0.1.0
+Copyright 2020 Steven Mycynek
 
 I wanted to create a full stack project from scratch included:
 
@@ -9,7 +12,6 @@ I wanted to create a full stack project from scratch included:
 * API Workflow (apisauce and redux-sagas)
 * Back-End (Django Rest Framework)
 * Deployment (Heroku)
-
 
 ## Usage
 ```
