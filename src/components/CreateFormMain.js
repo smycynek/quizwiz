@@ -68,6 +68,22 @@ const CreateFormMain = ({
     setDoneWorkflow(quizId);
   };
 
+  const getLinkText = (id) => {
+    const link = document.getElementById(id);
+    if (link) {
+      return link.href;
+    }
+    return null;
+  };
+
+  const copyLinkText = (bufferId, linkId) => {
+    const buffer = document.getElementById(bufferId);
+    const linkText = getLinkText(linkId);
+    buffer.value = linkText;
+    buffer.select();
+    document.execCommand('copy');
+  };
+
   return (
     <div className="App">
       <h1 className="text-primary">Quiz Wiz</h1>
@@ -106,8 +122,33 @@ const CreateFormMain = ({
       <ToastContainer />
       {quizId && done && (
       <>
-        <div>Your quiz:</div>
-        <Link onClick={reset} to={`/take/${quizId}`}>{quizTitle}</Link>
+        <Link id="link_1" onClick={reset} to={`/take/${quizId}`}>
+          Your quiz:
+          {' '}
+          {quizTitle}
+        </Link>
+        <br />
+        <input
+          style={{
+            display: 'inline-block', opacity: 0.5, height: '11px', fontSize: '10px', width: '450px', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px',
+          }}
+          className="form-control"
+          type="text"
+          value={getLinkText('link_1')}
+          id="id_copy_buffer"
+        />
+
+        <button
+          style={{
+            margin: '3px', display: 'inline-block', fontSize: '10px', height: '19px', padding: '2px',
+          }}
+
+          onClick={() => copyLinkText('id_copy_buffer', 'link_1')}
+          type="button"
+          className="btn btn-primary"
+        >
+          &#x1F517; Copy Link
+        </button>
       </>
       )}
       <div>
