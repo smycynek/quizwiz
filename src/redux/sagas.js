@@ -73,6 +73,7 @@ function* setDoneSaga(action) {
     const result = yield call(
       client.publishQuiz,
       action.quizId,
+      action.makeListable,
     );
     if (!result.ok) {
       throw new Error(result.problem);

@@ -42,7 +42,7 @@ const TakeQuiz = ({ match }) => {
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
       {waiting && <div>Loading quiz...</div>}
       {error && <div>Quiz not found or error loading...</div>}
-      {quizData && (
+      {quizData && !error && (
       <CasualQuiz
         name={quizData.name}
         results={quizData.results}

@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(Creators.addQuestion(text, choices, quizId));
     },
     setOneQuestionDone: () => dispatch(Creators.setOneQuestionDone()),
-    setDoneWorkflow: (quizId) => dispatch(Creators.setDone(quizId)),
+    setDoneWorkflow: (quizId, makeListable) => dispatch(Creators.setDone(quizId, makeListable)),
     createQuizWorkflow: (name) => dispatch(Creators.createQuiz(name)),
     reset: () => dispatch(Creators.reset()),
   });
