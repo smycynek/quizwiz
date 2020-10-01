@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
-  <li key={datum[1]}>
+  <li style={{ margin: '1px', padding: '2px' }} key={datum[1]}>
     <Link to={`/take/${datum[1]}`}>{datum[0]}</Link>
   </li>
 ));
@@ -50,14 +50,14 @@ const ListQuizzes = () => {
 
   useEffect(fetchQuizzes, []);
   return (
-    <>
+    <div className="App">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-
+      <h1 className="text-primary">All Quizzes</h1>
       {waiting && <div>Loading quiz list (Using free tier hosting, please wait 30 seconds)...</div>}
       {error && <div>Error listing quizzes...</div>}
       {quizList && (
       <>
-        <ul style={{ listStyleType: 'none' }}>
+        <ul style={{ listStyleType: 'none', padding: '2px' }}>
           <QuizList key={1} data={quizList} />
         </ul>
       </>
@@ -65,7 +65,7 @@ const ListQuizzes = () => {
       <div>
         <Link to="/">Home...</Link>
       </div>
-    </>
+    </div>
   );
 };
 

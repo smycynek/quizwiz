@@ -131,6 +131,8 @@ const CreateQuestionForm = ({
             </button>
           </div>
           <div>
+            <label>
+              Show quiz in public list?
             <Field
               component="input"
               type="checkbox"
@@ -138,6 +140,7 @@ const CreateQuestionForm = ({
               defaultChecked
               defaultValue="on"
             />
+            </label>
           </div>
         </form>
       </div>
