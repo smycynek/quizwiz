@@ -20,6 +20,8 @@ yarn start
 ```
 Requires back-end -- see https://github.com/smycynek/quizfreak
 
+Also uses https://github.com/smycynek/react-casual-quiz
+
 Live demo at:
 
 https://stevenvictor.net/quizwiz
