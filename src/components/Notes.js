@@ -9,7 +9,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Notes = () => (
   <>
-    <h1 className="text-primary">Work in Progress - Known bugs/limitations...</h1>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+
+  <div className="App">
+    <h1 className="text-primary">Work in Progress</h1>
+    <h2 className="text-secondary">Known bugs/limitations...</h2>
     <ol>
       <li>
         The back-end is hosted on free-tier service.  It needs wake up if not in
@@ -39,6 +43,7 @@ const Notes = () => (
     <div>
       <Link to="/">Home...</Link>
     </div>
+  </div>
   </>
 );
 export default Notes;

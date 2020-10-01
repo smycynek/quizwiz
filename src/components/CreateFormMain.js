@@ -85,8 +85,10 @@ const CreateFormMain = ({
   };
 
   return (
+    <>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
     <div className="App">
-      <h1 className="text-primary">Quiz Wiz</h1>
+      <h1 className="text-primary">Create Quiz</h1>
       {
       !quizTitle && <CreateQuiz onSubmit={handleSubmitTitle} />
       }
@@ -155,6 +157,7 @@ const CreateFormMain = ({
         <Link onClick={reset} to="/">Home...</Link>
       </div>
     </div>
+    </>
   );
 };
 

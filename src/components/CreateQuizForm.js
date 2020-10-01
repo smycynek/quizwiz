@@ -13,6 +13,7 @@ const tooShort = (value) => (value && value.length < 5 ? 'Make it a good title!'
 
 const CreateQuizForm = ({ invalid, onSubmit }) => (
   <>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
     <form>
       <div>
         <h4 className="text-secondary">Give your quiz a name</h4>

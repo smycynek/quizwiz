@@ -54,7 +54,6 @@ ReactDOM.render(
           </Route>
           <Route exact path="/list">
             <>
-              <h1 className="text-primary">All Quizzes</h1>
               <ListQuizzes />
             </>
           </Route>

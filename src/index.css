@@ -3,17 +3,17 @@ h1,h2,h3,h4,p,span,button,body {
   font-family: 'Roboto', sans-serif;
 }
 body {
-  margin: 10px;
-  padding: 10px;
+  margin: 3px;
+  padding: 3px;
 }
 
 ol, li {
-  margin-left: 10px;
-  padding-left: 10px;
+  margin-left: 5px;
+  padding-left: 5px;
 }
 
 
 .App {
-  margin:30px;
+  margin:10px;
   font-family: 'Roboto', sans-serif;
 }
