@@ -14,7 +14,7 @@ const quizFreakClient = () => {
       name, description, index, quiz_id,
     }),
     createQuestion: (text, choices, quiz_id) => api.post('/questions', { text, choices, quiz_id }),
-    publishQuiz: (quiz_id) => api.post(`/quizzes/${quiz_id}/lock`),
+    publishQuiz: (quiz_id, makeListable) => api.post(`/quizzes/${quiz_id}/lock?public=${makeListable}`),
   };
 };
 

@@ -15,5 +15,8 @@ const mapStateToProps = (state) => ({
 // eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => ({});
 
-const CreateQuestion = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'CreateQuestion' })(CreateQuestionForm));
+const CreateQuestion = connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+  form: 'CreateQuestion',
+  initialValues: { makeListable: true },
+})(CreateQuestionForm));
 export default CreateQuestion;

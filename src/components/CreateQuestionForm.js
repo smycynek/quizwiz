@@ -130,6 +130,15 @@ const CreateQuestionForm = ({
               Finished...
             </button>
           </div>
+          <div>
+            <Field
+              component="input"
+              type="checkbox"
+              name="makeListable"
+              defaultChecked
+              defaultValue="on"
+            />
+          </div>
         </form>
       </div>
     </>

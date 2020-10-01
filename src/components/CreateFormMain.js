@@ -65,7 +65,8 @@ const CreateFormMain = ({
   };
 
   const handlePublish = () => {
-    setDoneWorkflow(quizId);
+    console.log(formValuesFromCreateQuestion.makeListable);
+    setDoneWorkflow(quizId, formValuesFromCreateQuestion.makeListable);
   };
 
   const getLinkText = (id) => {
