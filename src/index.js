@@ -11,6 +11,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import TakeQuiz from './components/TakeQuiz';
 import CreateMain from './containers/CreateMain';
+import TakeRandomQuiz from './components/TakeRandomQuiz';
 
 import ListQuizzes from './components/ListQuizzes';
 import reducer from './redux/reducers';
@@ -74,6 +75,12 @@ ReactDOM.render(
             path="/take/:id"
             render={(props) => (<TakeQuiz {...props} />)}
           />
+
+          <Route exact path="/random">
+            <>
+              <TakeRandomQuiz />
+            </>
+          </Route>
 
           <Route exact path="/cq">
             <>
