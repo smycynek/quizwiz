@@ -75,6 +75,11 @@ ReactDOM.render(
             render={(props) => (<TakeQuiz {...props} />)}
           />
 
+          <Route
+            path="/random"
+            render={(props) => (<TakeQuiz {...props} />)}
+          />
+
           <Route exact path="/cq">
             <>
               <CreateQuiz />

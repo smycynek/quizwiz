@@ -21,18 +21,27 @@ const TakeQuiz = ({ match }) => {
   function fetchQuiz(quizId) {
     setWaiting(true);
     setError(false);
-    client.getQuiz(quizId)
-      .then((res) => {
-        const { data } = res;
-        setQuizData(data);
-        setWaiting(false);
-      },
-      (err) => {
-        setWaiting(false);
-        setError(true);
-        setQuizData(null);
-        console.log(err);
-      });
+
+    const success = (res) => {
+      const { data } = res;
+      setQuizData(data);
+      setWaiting(false);
+    };
+
+    const failure = (err) => {
+      setWaiting(false);
+      setError(true);
+      setQuizData(null);
+      console.log(err);
+    };
+
+    if (quizId) {
+      client.getQuiz(quizId)
+        .then(success, failure);
+    } else {
+      client.getRandomQuiz()
+        .then(success, failure);
+    }
   }
 
   useEffect(() => fetchQuiz(id), []);

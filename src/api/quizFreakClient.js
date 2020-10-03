@@ -7,6 +7,7 @@ const quizFreakClient = () => {
   });
 
   return {
+    getRandomQuiz: () => api.get('/quizzes/random'),
     getQuiz: (id) => api.get(`/quizzes/${id}`),
     getQuizzes: () => api.get('/quizzes'),
     createQuiz: (name) => api.post('/quizzes', { name }),
