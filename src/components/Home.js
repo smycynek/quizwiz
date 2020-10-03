@@ -17,9 +17,7 @@ const Home = () => {
         const { data } = res;
         const quizNames = [];
         data.forEach((element) => {
-          if (element.locked) {
-            quizNames.push([element.name, element.id]);
-          }
+          quizNames.push([element.name, element.id]);
         });
       },
       (err) => {
