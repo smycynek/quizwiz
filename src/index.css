@@ -22,6 +22,7 @@ ol, li {
 }
 
 .BannerLink {
+
   border-color: black;
   border-width: 2px;
   width: '30%';
@@ -31,4 +32,8 @@ ol, li {
   color: white;
   background-color:#0275d8;
   font-family: 'Roboto', sans-serif;
+}
+
+.BannerLink:hover {
+  background-color:#0265d2;
 }
