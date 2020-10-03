@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 export const notifySuccess = (text) => {
-  toast.success(text, {
+  toast.info(text, {
     hideProgressBar: true,
     autoClose: 2000,
   });

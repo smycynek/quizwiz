@@ -11,7 +11,7 @@ import '../index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
   <li style={{ margin: '1px', padding: '2px' }} key={datum[1]}>
-    <Link to={`/take/${datum[1]}`}>{datum[0]}</Link>
+    <Link style={{ color: '#000' }} to={`/take/${datum[1]}`}>{datum[0]}</Link>
   </li>
 ));
 
