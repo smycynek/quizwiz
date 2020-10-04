@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CasualQuiz from 'react-casual-quiz/lib';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 import quizFreakClient from '../api/quizFreakClient';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -48,6 +50,14 @@ const TakeQuiz = ({ match }) => {
 
   return (
     <>
+      <Helmet>
+
+        <meta
+          name="description"
+          content={quizData ? quizData.name : 'Loading...'}
+        />
+      </Helmet>
+
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
       {waiting && <div>Loading quiz...</div>}
       {error && <div>Quiz not found or error loading...</div>}

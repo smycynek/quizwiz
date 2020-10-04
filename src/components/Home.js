@@ -27,31 +27,28 @@ const Home = () => {
 
   useEffect(preWarm, []); // need to improve
   return (
-    <div class="container">
-    <div className="App">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-      <h1 className="text-primary">Quiz Wiz</h1>
-      <p>Make, take, and share fun personality quizzes.</p>
-      <div>
-        <h4 className="BannerLink">
+    <div className="container">
+      <div className="App">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+        <h1 className="text-primary">Quiz Wiz</h1>
+        <p>Make, take, and share fun personality quizzes.</p>
+        <div>
+
           <Link style={{ color: '#fff' }} to="/create">
-            Create a quiz
+            <h4 className="BannerLink">Create a Quiz</h4>
           </Link>
-        </h4>
-      </div>
-      <div>
-        <h4 className="BannerLink">
+        </div>
+        <div>
           <Link style={{ color: '#fff' }} to="/list">
-            Browse quizzes
+            <h4 className="BannerLink">Browse Quizzes</h4>
           </Link>
-        </h4>
-        <h4 className="BannerLink">
+
           <Link style={{ color: '#fff' }} to="/random">
-            Random quiz
+            <h4 className="BannerLink">Random Quiz</h4>
           </Link>
-        </h4>
-      </div>
-      {false
+
+        </div>
+        {false
 && (
 <div>
   <div>
@@ -66,9 +63,9 @@ const Home = () => {
 </div>
 )}
 
-      <hr />
-      <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
-    </div>
+        <hr />
+        <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
+      </div>
     </div>
   );
 };
