@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch) => (
     addResultWorkflow: (name, description, index, quizId) => {
       dispatch(Creators.addResult(name, description, index, quizId));
     },
+    addResultsBulkWorkflow: (results) => {
+      dispatch(Creators.addResultsBulk(results));
+    },
     addQuestionWorkflow: (text, choices, quizId) => {
       dispatch(Creators.addQuestion(text, choices, quizId));
     },

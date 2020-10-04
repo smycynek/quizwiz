@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import EnhancedInput from './EnhancedInput';
@@ -23,15 +23,16 @@ const CreateQuestionForm = ({
   questionIndex,
   reset,
 }) => {
+  const [publishing, setPublishing] = useState(false);
+
   const onSubmitWrapper = () => {
     reset();
     onSubmit();
   };
 
-  const publish = (invalidState) => {
-    if (!invalidState) {
-      onSubmit();
-    }
+  const onPublishWrapper = () => {
+    setPublishing(true);
+    reset();
     onSubmitPublish();
   };
 
@@ -54,7 +55,7 @@ const CreateQuestionForm = ({
             <Field
               label="Question text"
               placeholder="After a long day at work, I like to:"
-              validate={[required, tooShort]}
+              validate={publishing ? [] : [required, tooShort]}
               className="form-control"
               name="questionText"
               component={EnhancedInput}
@@ -66,7 +67,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice A (${personalityA})`}
               placeholder="Impulse buy a sports car"
-              validate={[required, tooShort]}
+              validate={publishing ? [] : [required, tooShort]}
               className="form-control"
               name="choiceA"
               component={EnhancedInput}
@@ -78,7 +79,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice B (${personalityB})`}
               placeholder="Re-evaluate the focus of my blog."
-              validate={[required, tooShort]}
+              validate={publishing ? [] : [required, tooShort]}
               className="form-control"
               name="choiceB"
               component={EnhancedInput}
@@ -90,7 +91,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice C (${personalityC})`}
               placeholder="Throw a party"
-              validate={[required, tooShort]}
+              validate={publishing ? [] : [required, tooShort]}
               className="form-control"
               name="choiceC"
               component={EnhancedInput}
@@ -102,7 +103,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice D (${personalityD})`}
               placeholder="Invent a robot that makes pancakes and give life coaching advice"
-              validate={[required, tooShort]}
+              validate={publishing ? [] : [required, tooShort]}
               className="form-control"
               name="choiceD"
               component={EnhancedInput}
@@ -117,15 +118,15 @@ const CreateQuestionForm = ({
               type="button"
               onClick={onSubmitWrapper}
             >
-              Add another question
+              Add this question
             </button>
           </div>
           <div style={{ padding: '5px' }}>
             <button
-              disabled={!oneQuestionDone && invalid}
+              disabled={!oneQuestionDone || !invalid}
               className="btn btn-primary"
               type="button"
-              onClick={() => publish(invalid)}
+              onClick={onPublishWrapper}
             >
               Finished...
             </button>

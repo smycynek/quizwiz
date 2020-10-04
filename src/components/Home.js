@@ -16,9 +16,11 @@ const Home = () => {
       .then((res) => {
         const { data } = res;
         const quizNames = [];
-        data.forEach((element) => {
-          quizNames.push([element.name, element.id]);
-        });
+        if (data) {
+          data.forEach((element) => {
+            quizNames.push([element.name, element.id]);
+          });
+        }
       },
       (err) => {
         console.log(err);

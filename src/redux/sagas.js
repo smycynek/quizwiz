@@ -49,6 +49,25 @@ function* createResultSaga(action) {
   }
 }
 
+function* createResultsBulkSaga(action) {
+  try {
+    const result = yield call(
+      client.createResultsBulk,
+      action.results,
+    );
+    if (!result.ok) {
+      throw new Error(result.problem);
+    }
+    yield put(
+      Creators.addResultsBulkSuccess(action.results),
+    );
+    yield notifySuccess(`New personas set (${action.results.length})`);
+  } catch (e) {
+    console.log(e);
+    yield notifyFailure(`Error adding new personas... ${e.message}`);
+  }
+}
+
 function* createQuestionSaga(action) {
   try {
     const result = yield call(
@@ -89,6 +108,7 @@ function* setDoneSaga(action) {
 export function* rootSaga() {
   yield takeLatest(Types.CREATE_QUIZ, createQuizSaga);
   yield takeEvery(Types.ADD_RESULT, createResultSaga);
+  yield takeEvery(Types.ADD_RESULTS_BULK, createResultsBulkSaga);
   yield takeEvery(Types.ADD_QUESTION, createQuestionSaga);
   yield takeEvery(Types.SET_DONE, setDoneSaga);
 }

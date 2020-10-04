@@ -21,7 +21,8 @@ import '../index.css';
 const CreateFormMain = ({
   formValuesFromCreateQuiz,
   formValuesFromCreateResults, formValuesFromCreateQuestion,
-  createQuizWorkflow, addResultWorkflow, addQuestionWorkflow, quizId, quizTitle, results, questions,
+  createQuizWorkflow, addResultsBulkWorkflow, addQuestionWorkflow,
+  quizId, quizTitle, results, questions,
   done, oneQuestionDone, setDoneWorkflow, setOneQuestionDone, reset,
 }) => {
   const handleSubmitTitle = () => {
@@ -29,21 +30,34 @@ const CreateFormMain = ({
   };
 
   const handleSubmitResults = () => {
-    addResultWorkflow(formValuesFromCreateResults.personalityA,
-      formValuesFromCreateResults.personalityADescription,
-      0, quizId);
-
-    addResultWorkflow(formValuesFromCreateResults.personalityB,
-      formValuesFromCreateResults.personalityBDescription,
-      1, quizId);
-
-    addResultWorkflow(formValuesFromCreateResults.personalityC,
-      formValuesFromCreateResults.personalityCDescription,
-      2, quizId);
-
-    addResultWorkflow(formValuesFromCreateResults.personalityD,
-      formValuesFromCreateResults.personalityDDescription,
-      3, quizId);
+    addResultsBulkWorkflow(
+      [
+        {
+          name: formValuesFromCreateResults.personalityA,
+          description: formValuesFromCreateResults.personalityADescription,
+          index: 0,
+          quiz_id: quizId,
+        },
+        {
+          name: formValuesFromCreateResults.personalityB,
+          description: formValuesFromCreateResults.personalityBDescription,
+          index: 1,
+          quiz_id: quizId,
+        },
+        {
+          name: formValuesFromCreateResults.personalityC,
+          description: formValuesFromCreateResults.personalityCDescription,
+          index: 2,
+          quiz_id: quizId,
+        },
+        {
+          name: formValuesFromCreateResults.personalityC,
+          description: formValuesFromCreateResults.personalityCDescription,
+          index: 3,
+          quiz_id: quizId,
+        },
+      ],
+    );
   };
 
   const handleSubmitQuestion = () => {
@@ -172,7 +186,7 @@ CreateFormMain.propTypes = {
   formValuesFromCreateResults: PropTypes.object,
   formValuesFromCreateQuestion: PropTypes.object,
   createQuizWorkflow: PropTypes.func.isRequired,
-  addResultWorkflow: PropTypes.func.isRequired,
+  addResultsBulkWorkflow: PropTypes.func.isRequired,
   addQuestionWorkflow: PropTypes.func.isRequired,
   quizId: PropTypes.string,
   quizTitle: PropTypes.string,

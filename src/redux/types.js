@@ -5,6 +5,8 @@ const { Types, Creators } = createActions({
   createQuizSuccess: ['name', 'quizId'],
   addResult: ['name', 'description', 'index', 'quizId'],
   addResultSuccess: ['name', 'description', 'index'],
+  addResultsBulk: ['results'],
+  addResultsBulkSuccess: ['results'],
   addQuestion: ['text', 'choices', 'quizId'],
   addQuestionSuccess: ['text', 'choices'],
   setDone: ['quizId', 'makeListable'],

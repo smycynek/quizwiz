@@ -28,6 +28,13 @@ export const addResultSuccess = (state = INITIAL_STATE, action) => {
   };
 };
 
+export const addResultsBulkSuccess = (state = INITIAL_STATE, action) => {
+  return {
+    ...state,
+    results: action.results,
+  };
+};
+
 export const addQuestionSuccess = (state = INITIAL_STATE, action) => {
   return {
     ...state,
@@ -64,6 +71,7 @@ export const HANDLERS = {
   [Types.ADD_QUESTION_SUCCESS]: addQuestionSuccess,
   [Types.SET_DONE_SUCCESS]: setDoneSuccess,
   [Types.SET_ONE_QUESTION_DONE]: oneQuestionDone,
+  [Types.ADD_RESULTS_BULK_SUCCESS]: addResultsBulkSuccess,
 };
 
 const mainReducer = createReducer(INITIAL_STATE, HANDLERS);
