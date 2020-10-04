@@ -51,11 +51,7 @@ const TakeQuiz = ({ match }) => {
   return (
     <>
       <Helmet>
-
-        <meta
-          name="description"
-          content={quizData ? quizData.name : 'Loading...'}
-        />
+        <title>{quizData ? `Quiz Wiz: ${quizData.name}` : 'Quiz Wiz'}</title>
       </Helmet>
 
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />

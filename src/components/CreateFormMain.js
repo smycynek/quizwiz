@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateQuiz from '../containers/CreateQuiz';
 import CreateResults from '../containers/CreateResults';
@@ -87,14 +88,18 @@ const CreateFormMain = ({
 
   return (
     <>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-    <div className="App">
-      <h1 className="text-primary">Create Quiz</h1>
-      {
+      <Helmet>
+        <title>Quiz Wiz: Create a new quiz</title>
+      </Helmet>
+
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+      <div className="App">
+        <h1 className="text-primary">Create Quiz</h1>
+        {
       !quizTitle && <CreateQuiz onSubmit={handleSubmitTitle} />
       }
 
-      { quizTitle
+        { quizTitle
       && (
       <>
         <h3>
@@ -105,59 +110,59 @@ const CreateFormMain = ({
       </>
       )}
 
-      {
+        {
     quizTitle && results && (results.length < 4) && <CreateResults onSubmit={handleSubmitResults} />
   }
 
-      {!done && results && (results.length > 3) && (
-      <CreateQuestion
-        personalityA={results.find((element) => element.index === 0).name}
-        personalityB={results.find((element) => element.index === 1).name}
-        personalityC={results.find((element) => element.index === 2).name}
-        personalityD={results.find((element) => element.index === 3).name}
+        {!done && results && (results.length > 3) && (
+        <CreateQuestion
+          personalityA={results.find((element) => element.index === 0).name}
+          personalityB={results.find((element) => element.index === 1).name}
+          personalityC={results.find((element) => element.index === 2).name}
+          personalityD={results.find((element) => element.index === 3).name}
 
-        onSubmitPublish={handlePublish}
-        onSubmit={handleSubmitQuestion}
-        oneQuestionDone={oneQuestionDone}
-        questionIndex={questions.length + 1}
-      />
-      ) }
-      <ToastContainer />
-      {quizId && done && (
-      <>
-        <Link id="link_1" onClick={reset} to={`/take/${quizId}`}>
-          Your quiz:
-          {' '}
-          {quizTitle}
-        </Link>
-        <br />
-        <input
-          style={{
-            display: 'inline-block', opacity: 0.5, height: '11px', fontSize: '10px', width: '450px', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px',
-          }}
-          className="form-control"
-          type="text"
-          value={getLinkText('link_1')}
-          id="id_copy_buffer"
+          onSubmitPublish={handlePublish}
+          onSubmit={handleSubmitQuestion}
+          oneQuestionDone={oneQuestionDone}
+          questionIndex={questions.length + 1}
         />
+        ) }
+        <ToastContainer />
+        {quizId && done && (
+        <>
+          <Link id="link_1" onClick={reset} to={`/take/${quizId}`}>
+            Your quiz:
+            {' '}
+            {quizTitle}
+          </Link>
+          <br />
+          <input
+            style={{
+              display: 'inline-block', opacity: 0.5, height: '11px', fontSize: '10px', width: '450px', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px',
+            }}
+            className="form-control"
+            type="text"
+            value={getLinkText('link_1')}
+            id="id_copy_buffer"
+          />
 
-        <button
-          style={{
-            margin: '3px', display: 'inline-block', fontSize: '10px', height: '19px', padding: '2px',
-          }}
+          <button
+            style={{
+              margin: '3px', display: 'inline-block', fontSize: '10px', height: '19px', padding: '2px',
+            }}
 
-          onClick={() => copyLinkText('id_copy_buffer', 'link_1')}
-          type="button"
-          className="btn btn-primary"
-        >
-          &#x1F517; Copy Link
-        </button>
-      </>
-      )}
-      <div>
-        <Link onClick={reset} to="/">Home...</Link>
+            onClick={() => copyLinkText('id_copy_buffer', 'link_1')}
+            type="button"
+            className="btn btn-primary"
+          >
+            &#x1F517; Copy Link
+          </button>
+        </>
+        )}
+        <div>
+          <Link onClick={reset} to="/">Home...</Link>
+        </div>
       </div>
-    </div>
     </>
   );
 };
