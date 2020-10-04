@@ -52,23 +52,13 @@ const Home = () => {
             </Link>
 
           </div>
-          {false
-&& (
-<div>
-  <div>
-    <Link to="/cq">(DEBUG)-quiz</Link>
-  </div>
-  <div>
-    <Link to="/cr">(DEBUG)-result</Link>
-  </div>
-  <div>
-    <Link to="/cqu">(DEBUG)-question</Link>
-  </div>
-</div>
-)}
-
           <hr />
-          <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
+          <div>
+            <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
+          </div>
+          <div>
+            <small><a href="https://stevenvictor.net">Home...</a></small>
+          </div>
         </div>
       </div>
     </>

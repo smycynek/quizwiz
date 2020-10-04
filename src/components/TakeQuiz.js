@@ -50,23 +50,25 @@ const TakeQuiz = ({ match }) => {
 
   return (
     <>
-      <Helmet>
-        <title>{quizData ? `Quiz Wiz: ${quizData.name}` : 'Quiz Wiz'}</title>
-      </Helmet>
+      <div className="App">
+        <Helmet>
+          <title>{quizData ? `Quiz Wiz: ${quizData.name}` : 'Quiz Wiz'}</title>
+        </Helmet>
 
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-      {waiting && <div>Loading quiz...</div>}
-      {error && <div>Quiz not found or error loading...</div>}
-      {quizData && !error && (
-      <CasualQuiz
-        name={quizData.name}
-        results={quizData.results}
-        questions={quizData.questions}
-      />
-      )}
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+        {waiting && <div>Loading quiz...</div>}
+        {error && <div>Quiz not found or error loading...</div>}
+        {quizData && !error && (
+        <CasualQuiz
+          name={quizData.name}
+          results={quizData.results}
+          questions={quizData.questions}
+        />
+        )}
 
-      <div>
-        <Link to="/">Home...</Link>
+        <div>
+          <Link to="/">Home...</Link>
+        </div>
       </div>
     </>
   );
