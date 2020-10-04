@@ -5,12 +5,12 @@
 Version 0.1.0
 Copyright 2020 Steven Mycynek
 
-I wanted to create a full stack project from scratch included:
+I wanted to create a full stack project from scratch that included:
 
 * UI (React and redux-forms)
 * State management (Redux and redux-sauce)
 * API Workflow (apisauce and redux-sagas)
-* Back-End (Django Rest Framework)
+* A database-driven back-end (Django Rest Framework with Postgres)
 * Deployment (Heroku)
 
 ## Usage
