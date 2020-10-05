@@ -23,16 +23,13 @@ const CreateQuestionForm = ({
   questionIndex,
   reset,
 }) => {
-  const [publishing, setPublishing] = useState(false);
-
   const onSubmitWrapper = () => {
     reset();
     onSubmit();
   };
 
-  const onPublishWrapper = () => {
-    setPublishing(true);
-    reset();
+  const onPublishWrapper = (e) => {
+    e.preventDefault();
     onSubmitPublish();
   };
 
@@ -55,7 +52,7 @@ const CreateQuestionForm = ({
             <Field
               label="Question text"
               placeholder="After a long day at work, I like to:"
-              validate={publishing ? [] : [required, tooShort]}
+              validate={[required, tooShort]}
               className="form-control"
               name="questionText"
               component={EnhancedInput}
@@ -67,7 +64,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice A (${personalityA})`}
               placeholder="Impulse buy a sports car"
-              validate={publishing ? [] : [required, tooShort]}
+              validate={[required, tooShort]}
               className="form-control"
               name="choiceA"
               component={EnhancedInput}
@@ -79,7 +76,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice B (${personalityB})`}
               placeholder="Re-evaluate the focus of my blog."
-              validate={publishing ? [] : [required, tooShort]}
+              validate={[required, tooShort]}
               className="form-control"
               name="choiceB"
               component={EnhancedInput}
@@ -91,7 +88,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice C (${personalityC})`}
               placeholder="Throw a party"
-              validate={publishing ? [] : [required, tooShort]}
+              validate={[required, tooShort]}
               className="form-control"
               name="choiceC"
               component={EnhancedInput}
@@ -103,7 +100,7 @@ const CreateQuestionForm = ({
             <Field
               label={`Choice D (${personalityD})`}
               placeholder="Invent a robot that makes pancakes and give life coaching advice"
-              validate={publishing ? [] : [required, tooShort]}
+              validate={[required, tooShort]}
               className="form-control"
               name="choiceD"
               component={EnhancedInput}
