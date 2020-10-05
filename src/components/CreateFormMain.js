@@ -51,8 +51,8 @@ const CreateFormMain = ({
           quiz_id: quizId,
         },
         {
-          name: formValuesFromCreateResults.personalityC,
-          description: formValuesFromCreateResults.personalityCDescription,
+          name: formValuesFromCreateResults.personalityD,
+          description: formValuesFromCreateResults.personalityDDescription,
           index: 3,
           quiz_id: quizId,
         },
