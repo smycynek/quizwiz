@@ -166,3 +166,54 @@ ol, li {
 .ContentLink {
   color: black;
 }
+
+.ContentList {
+  list-style: none;
+  padding: 0;
+  line-height: 1em;
+}
+
+.InputWrapper {
+  padding-left:1em;
+  padding-right:1em;
+  padding-bottom: 0.6em;
+}
+
+.ShortInputWrapper {
+  padding-left: 2em;
+}
+
+.ButtonWrapper {
+  padding: 0.5em;
+}
+
+#copyLinkButton {
+    padding: 1px;
+    margin: 3px;
+    display: inline-block;
+    font-size: 11px;
+    height: 21px;
+    padding: 3px;
+}
+
+#id_copy_buffer {
+  display: inline-block;
+   opacity: 0.5;
+   height: 11px;
+   font-size: 10px; 
+   width: 450px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+
+.EnhancedInputLabel {
+  padding: 0px;
+  margin: 0px;
+}
+
+.StandardInput {
+  width: 100%;
+}

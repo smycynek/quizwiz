@@ -149,9 +149,6 @@ const CreateFormMain = ({
           </Link>
           <br />
           <input
-            style={{
-              display: 'inline-block', opacity: 0.5, height: '11px', fontSize: '10px', width: '450px', paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px',
-            }}
             className="form-control"
             type="text"
             value={getLinkText('link_1')}
@@ -159,10 +156,7 @@ const CreateFormMain = ({
           />
 
           <button
-            style={{
-              margin: '3px', display: 'inline-block', fontSize: '10px', height: '19px', padding: '2px',
-            }}
-
+            id="copyLinkButton"
             onClick={() => copyLinkText('id_copy_buffer', 'link_1')}
             type="button"
             className="btn btn-primary"

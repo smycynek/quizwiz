@@ -12,9 +12,9 @@ const EnhancedInput = ({
   input, label, placeholder, type, meta: { touched, error },
 }) => (
   <div>
-    <label><small><b>{label}</b></small></label>
+    <label className="EnhancedInputLabel"><small><b>{label}</b></small></label>
     <div>
-      <input style={{ width: '100%' }} {...input} placeholder={placeholder} type={type} />
+      <input className="StandardInput" {...input} placeholder={placeholder} type={type} />
       <small className="form-text text-danger">{touched && (error && <span>{error}</span>) }</small>
     </div>
   </div>

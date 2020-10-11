@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
 const QuizList = ({ data }) => data.map((datum) => (
-  <li style={{ margin: '1px', padding: '2px' }} key={datum[1]}>
+  <li key={datum[1]}>
     <Link className="ContentLink" to={`/take/${datum[1]}`}>{datum[0]}</Link>
   </li>
 ));
@@ -54,7 +54,7 @@ const ListQuizzes = () => {
       {error && <div>Error listing quizzes...</div>}
       {quizList && (
       <>
-        <ul style={{ listStyleType: 'none', padding: '2px' }}>
+        <ul className="ContentList">
           <QuizList key={1} data={quizList} />
         </ul>
       </>
