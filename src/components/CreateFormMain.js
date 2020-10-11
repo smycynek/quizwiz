@@ -105,8 +105,6 @@ const CreateFormMain = ({
       <Helmet>
         <title>Quiz Wiz: Create a new quiz</title>
       </Helmet>
-
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
       <div className="App">
         <h1 className="text-primary">Create Quiz</h1>
         {

@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Notes = () => (
   <>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
 
     <div className="App">
       <h1 className="text-primary">Work in Progress</h1>

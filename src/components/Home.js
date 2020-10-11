@@ -35,22 +35,21 @@ const Home = () => {
       </Helmet>
       <div className="container">
         <div className="App">
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
           <h1 className="text-primary">Quiz Wiz</h1>
           <p>Make, take, and share fun personality quizzes.</p>
           <div>
 
-            <Link style={{ color: '#fff' }} to="/create">
-              <h4 className="BannerLink">Create a Quiz</h4>
+            <Link to="/create">
+              <h4 className="MenuButton">Create a Quiz</h4>
             </Link>
           </div>
           <div>
-            <Link style={{ color: '#fff' }} to="/list">
-              <h4 className="BannerLink">Browse Quizzes</h4>
+            <Link to="/list">
+              <h4 className="MenuButton">Browse Quizzes</h4>
             </Link>
 
-            <Link style={{ color: '#fff' }} to="/random">
-              <h4 className="BannerLink">Random Quiz</h4>
+            <Link to="/random">
+              <h4 className="MenuButton">Random Quiz</h4>
             </Link>
 
           </div>

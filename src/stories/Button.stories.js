@@ -12,8 +12,7 @@ export default {
 
 const Template = (args) => (
   <>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-    <Button {...args} />
+     <Button {...args} />
   </>
 );
 
