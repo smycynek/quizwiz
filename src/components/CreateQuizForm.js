@@ -15,7 +15,7 @@ const CreateQuizForm = ({ invalid, onSubmit }) => (
   <>
     <form>
       <div>
-        <div className="Instructions">Give your quiz a name</div>
+        <div className="Instructions">Give your quiz a name.</div>
         <div className="form-group">
           <Field label="Title" placeholder="Which BoJack Horseman character are you?" validate={[required, tooShort]} className="form-control" name="quizTitle" component={EnhancedInput} type="text" />
         </div>

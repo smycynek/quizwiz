@@ -128,33 +128,21 @@ time, mark, audio, video {
   font-weight: 500;
 }
 
-
-body {
-  margin: 3px;
-  padding: 3px;
-  background-color: #efefef;
-}
-
 ol, li {
-  margin-left: 5px;
-  padding-left: 5px;
-}
-
-
-.App {
-  width: '30%';
-  max-width: '30%';
-  margin:10px;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
 }
 
 .MenuButton {
-
-  border-color: black;
-  border-width: 2px;
-  width: '30%';
+  display: flexbox;
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
-  border-radius: 10px;
-  padding:10px;
+  border-radius: 0.5em;
+  padding:0.5em;
   color: white;
   background-color:#0275d8;
 }
@@ -188,30 +176,30 @@ ol, li {
 }
 
 #copyLinkButton {
-    padding: 1px;
-    margin: 3px;
+    padding: .1em;
+    margin: .25em;
     display: inline-block;
-    font-size: 11px;
-    height: 21px;
-    padding: 3px;
+    font-size: .75em;
+    height: 2em;
+    padding: .25em;
 }
 
 #id_copy_buffer {
   display: inline-block;
    opacity: 0.5;
-   height: 11px;
-   font-size: 10px; 
+   height: .75em;
+   font-size: .75em;
    width: 450px;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   margin-top: 10px;
-   margin-bottom: 10px;
+   padding-top: 1em;
+   padding-bottom: 1em;
+   margin-top: 1em;
+   margin-bottom: 1em;
 }
 
 
 .EnhancedInputLabel {
-  padding: 0px;
-  margin: 0px;
+  padding: 0em;
+  margin: 0em;
 }
 
 .StandardInput {

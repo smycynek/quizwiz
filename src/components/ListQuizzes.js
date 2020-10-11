@@ -48,7 +48,7 @@ const ListQuizzes = () => {
 
   useEffect(fetchQuizzes, []);
   return (
-    <div className="App">
+    <div className="container-fluid">
       <h1 className="text-primary">All Quizzes</h1>
       {waiting && <div>Loading quiz list (Using free tier hosting, please wait 30 seconds)...</div>}
       {error && <div>Error listing quizzes...</div>}

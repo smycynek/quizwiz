@@ -105,7 +105,7 @@ const CreateFormMain = ({
       <Helmet>
         <title>Quiz Wiz: Create a new quiz</title>
       </Helmet>
-      <div className="App">
+      <div className="container-fluid">
         <h1 className="text-primary">Create Quiz</h1>
         {
       !quizTitle && <CreateQuiz onSubmit={handleSubmitTitle} />
@@ -142,7 +142,7 @@ const CreateFormMain = ({
         <ToastContainer />
         {quizId && done && (
         <>
-          <Link id="link_1" onClick={reset} to={`/take/${quizId}`}>
+          <Link className="Instructions" id="link_1" onClick={reset} to={`/take/${quizId}`}>
             Your quiz:
             {' '}
             {quizTitle}
