@@ -43,10 +43,10 @@ const CreateQuestionForm = ({
           {questionIndex}
           {' '}
         </h4>
-        <h4 className="text-secondary">
+        <div className="Instructions">
           Add a question, pairing the choices with the personality outcomes you
           entered previously.
-        </h4>
+        </div>
         <form>
           <div className="InputWrapper">
             <div className="form-group">

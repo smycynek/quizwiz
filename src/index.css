@@ -217,3 +217,10 @@ ol, li {
 .StandardInput {
   width: 100%;
 }
+
+.Instructions {
+  color: grey;
+  font-size: 1.25em;
+  line-height: 1.125em;
+  margin-bottom: 1em;
+}

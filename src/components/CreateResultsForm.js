@@ -15,10 +15,10 @@ const tooShort = (value) => (value && value.length < 1 ? 'Make it a good persona
 const CreateResultsForm = ({ invalid, onSubmit }) => (
   <>
     <div>
-      <h4 className="text-secondary">
+      <div className="Instructions">
         What are the four quiz outcomes, i.e, the personality results (corresponding
         to question choices A, B, C, and D) ?
-      </h4>
+      </div>
       <form>
         <div className="InputWrapper">
           <div className="form-group">
