@@ -50,7 +50,7 @@ const TakeQuiz = ({ match }) => {
 
   return (
     <>
-      <div className="App">
+      <div className="container-fluid">
         <Helmet>
           <title>{quizData ? `Quiz Wiz: ${quizData.name}` : 'Quiz Wiz'}</title>
         </Helmet>
