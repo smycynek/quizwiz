@@ -36,7 +36,7 @@ const Home = () => {
       <div className="container-fluid">
         <div>
           <h1 className="text-primary">Quiz Wiz</h1>
-          <p className="Instructions" >Make, take, and share fun personality quizzes.</p>
+          <p className="Instructions">Make, take, and share fun personality quizzes.</p>
           <div>
 
             <Link to="/create">

@@ -212,3 +212,7 @@ ol, li {
   line-height: 1.125em;
   margin-bottom: 1em;
 }
+
+h1 {
+  font-size: 2em;
+}
