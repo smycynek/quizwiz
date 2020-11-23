@@ -211,3 +211,10 @@ time, mark, audio, video {
 h1 {
   font-size: 1.75em !important;
 }
+
+
+.socialMedia {
+  margin: 0.1em;
+  height: 2em;
+  width: 2em;
+}
