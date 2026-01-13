@@ -2,8 +2,8 @@
 
 # A quiz-building UI and front-end for QuizFreak.
 
-Version 0.1.0
-Copyright 2020 Steven Mycynek
+Version 0.1.1
+Copyright 2020-2026 Steven Mycynek
 
 I wanted to create a full stack project from scratch that included:
 
@@ -15,8 +15,8 @@ I wanted to create a full stack project from scratch that included:
 
 ## Usage
 ```
-yarn install
-yarn start
+npm install
+npm run start
 ```
 Requires back-end -- see https://github.com/smycynek/quizfreak
 
