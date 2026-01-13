@@ -112,3 +112,5 @@ sitevars.sh
 quizwiz
 quizwiz.zip
 build
+
+.DS_STORE
