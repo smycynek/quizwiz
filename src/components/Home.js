@@ -57,6 +57,7 @@ const Home = () => {
           <div>
             <small><a href="https://github.com/smycynek/quizwiz">https://github.com/smycynek/quizwiz</a></small>
           </div>
+          <hr />
           <div>
             <small><a href="https://stevenvictor.net">Home...</a></small>
           </div>
