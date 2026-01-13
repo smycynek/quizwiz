@@ -53,5 +53,8 @@ scp "$APP".zip "$SITE":public_html
 export SHELL_COMMAND="cd public_html; rm -rf $APP; unzip $APP.zip; rm $APP.zip; exit; bash"
 echo "$SHELL_COMMAND"
 ssh -t "$SITE" "$SHELL_COMMAND"
-
+scp .env "$SITE":public_html/"$APP"/.env
 echo $(pwd)
+
+rm -rf quizwiz;
+rm -rf quizwiz.zip;

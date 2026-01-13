@@ -37,7 +37,7 @@ done
 
 
 # unzip zip at site, exit
-export SHELL_COMMAND="cd public_html; cd $APP; ls -l; cd assets; ls -l;"
+export SHELL_COMMAND="cd public_html; cd $APP; ls -a -l; cd public; ls -a -l;"
 echo "$SHELL_COMMAND"
 ssh -t "$SITE" "$SHELL_COMMAND"
 cd ../..
